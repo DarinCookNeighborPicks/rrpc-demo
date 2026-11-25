@@ -1,4 +1,48 @@
 window.RRPC_DATA = {
+
+  homeChecklist: [
+    { lead: "16 Dedicated Courts", text: "purpose-built surface right beside the Robson Ranch Sports Club" },
+    { lead: "8 Lighted Courts", text: "Courts 1–8 lit nightly until 10:00 PM for evening play" },
+    { lead: "Free Beginner Lessons", text: "Monday & Wednesday 8–10 AM on HOA Courts 1 & 2" },
+    { lead: "Level-Based Play", text: "organized weekly blocks from 2.5 Novice through 5.0" },
+    { lead: "CourtReserve Booking", text: "reserve Courts 3–14 up to 3 days ahead starting 6:30 AM" },
+    { lead: "HOA Paddle Up", text: "walk-up rotation on HOA Courts 1, 2, 15 & 16 (Oct 23 rule)" },
+    { lead: "2.5s & A Coach", text: "Tuesday mentoring sessions supporting 52+ mentored players" },
+    { lead: "Playmate Ball Machines", text: "two club machines available via Sports Desk checkout" },
+    { lead: "Official Ratings", text: "Nov 1–Mar 31 Step-Up testing (48+ pts) & verified transfers" },
+    { lead: "Seasonal Events", text: "Christmas on the Courts, Jan Skills & Drills, March Tournament" },
+    { lead: "670 Active Members", text: "financially healthy club with $33,891 balance & $30 annual dues" },
+    { lead: "Future Enhancements", text: "HOA-funded dinking wall & water/ice pavilion awaiting developer sign-off" }
+  ],
+
+  ratings: [
+    { level: "2.0 Novice", title: "Getting Started", text: "Ideal for brand-new players taking free Mon/Wed Beginner Lessons (HOA Cts 1–2) to learn scoring, serving, and safety." },
+    { level: "2.5 Beginner+", title: "2.5s & A Coach", text: "Developing consistent serves and dinks. Tuesday morning 2.5s & A Coach mentoring on Ct 4 helps bridge to 3.0." },
+    { level: "3.0 Intermediate", title: "Club & Mix Play", text: "Consistent rally control, third-shot drops in progress, and solid positioning in club Ladies, Men, and Mix blocks." },
+    { level: "3.5 High Int.", title: "Competitive Club", text: "Strong soft game, kitchen patience, and DUPR 3.5 Mix options on Thursday mornings plus Jan 2027 Skills & Drills." },
+    { level: "4.0 Advanced Int.", title: "4.0 & IC Play", text: "Strategic shot placement, spin variation, and Saturday 4.0 Ladies Inter-Community play." },
+    { level: "4.5 – 5.0 Advanced", title: "Top Tier & IC", text: "High-pace hand battles, reset mastery, and dedicated 4.5+ / 5.0 play blocks plus Saturday 4.5+ Inter-Community." }
+  ],
+
+  courts: [
+    { num: 1, zone: "HOA", lit: true, note: "HOA Walk-Up / Paddle Up court; hosts Free Beginner Lessons Mon/Wed 8–10 AM." },
+    { num: 2, zone: "HOA", lit: true, note: "HOA Walk-Up / Paddle Up court; hosts Free Beginner Lessons Mon/Wed 8–10 AM." },
+    { num: 3, zone: "Club", lit: true, note: "Club Scheduled & CourtReserve (1–2 hrs, 3 days ahead @ 6:30 AM). Hosts 5.0 & Walking Wounded blocks." },
+    { num: 4, zone: "Club", lit: true, note: "Club Scheduled & CourtReserve. Hosts Tuesday 2.5s & A Coach mentoring and level play." },
+    { num: 5, zone: "Club", lit: true, note: "Club Scheduled & CourtReserve (lighted until 10:00 PM)." },
+    { num: 6, zone: "Club", lit: true, note: "Club Scheduled & CourtReserve (lighted until 10:00 PM)." },
+    { num: 7, zone: "Club", lit: true, note: "Club Scheduled & CourtReserve (lighted until 10:00 PM)." },
+    { num: 8, zone: "Club", lit: true, note: "Club Scheduled & CourtReserve (lighted until 10:00 PM)." },
+    { num: 9, zone: "Club", lit: false, note: "Club Scheduled & CourtReserve (daylight hours)." },
+    { num: 10, zone: "Club", lit: false, note: "Club Scheduled & CourtReserve (daylight hours)." },
+    { num: 11, zone: "Club", lit: false, note: "Club Scheduled & CourtReserve (daylight hours)." },
+    { num: 12, zone: "Club", lit: false, note: "Club Scheduled & CourtReserve (daylight hours)." },
+    { num: 13, zone: "Club", lit: false, note: "Club Scheduled & CourtReserve (daylight hours)." },
+    { num: 14, zone: "Club", lit: false, note: "Club Scheduled & CourtReserve (daylight hours)." },
+    { num: 15, zone: "HOA", lit: false, note: "HOA Walk-Up / Paddle Up court (eff. Oct 23, 2026) when not in scheduled club use." },
+    { num: 16, zone: "HOA", lit: false, note: "HOA Walk-Up / Paddle Up court (eff. Oct 23, 2026) when not in scheduled club use." }
+  ],
+
   board: [
     { name: "Lynn Beatty", role: "President", initials: "LB" },
     { name: "Kirk Weidner", role: "Vice President", initials: "KW" },
