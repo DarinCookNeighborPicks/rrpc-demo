@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Robson Ranch Pickleball Club — Eloy, AZ (Concept Demo)</title>
-  <meta name="description" content="Robson Ranch Pickleball Club in Eloy, Arizona: 16 dedicated courts, 670 members, weekly schedule, CourtReserve booking, free beginner lessons, and club policies." />
+  <title>Robson Ranch Pickleball Club — Member Site (Concept Demo)</title>
+  <meta name="description" content="Private club for Robson Ranch residents and homeowners in Eloy, Arizona. Member dashboard, court schedule, CourtReserve booking, renewal, and self-serve Help / FAQ." />
   <meta name="theme-color" content="#195051" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ffffff' stroke='%23195051' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='16' fill='%23195051'/%3E%3Ccircle cx='27' cy='27' r='2' fill='%23d4e0ad'/%3E%3Ccircle cx='36' cy='25' r='2' fill='%23d4e0ad'/%3E%3Ccircle cx='38' cy='34' r='2' fill='%23d4e0ad'/%3E%3Ccircle cx='29' cy='37' r='2' fill='%23d4e0ad'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,7 +18,7 @@
   <div class="demo-banner" role="note" aria-label="Concept demo notice">
     <span class="demo-dot" aria-hidden="true"></span>
     <span><strong>Concept demo</strong> — not the official club site</span>
-    <a href="#contact" class="demo-banner-link" data-nav="contact">Real vs. sample info</a>
+    <a href="#help" class="demo-banner-link" data-nav="help" data-scroll="real-vs-sample">Real vs. sample info</a>
   </div>
 
   <header class="site-header">
@@ -44,16 +44,20 @@
 
       <nav class="desktop-nav" aria-label="Primary navigation">
         <a href="#home" data-nav="home" class="nav-link active">Home</a>
-        <a href="#about" data-nav="about" class="nav-link">New Here &amp; About</a>
-        <a href="#play" data-nav="play" class="nav-link">Courts &amp; Play</a>
+        <a href="#play" data-nav="play" class="nav-link">Playtimes</a>
         <a href="#events" data-nav="events" class="nav-link">Events</a>
-        <a href="#news" data-nav="news" class="nav-link">News</a>
-        <a href="#policies" data-nav="policies" class="nav-link">Policies &amp; Info</a>
-        <a href="#contact" data-nav="contact" class="nav-link">Contact</a>
+        <a href="#testing" data-nav="testing" class="nav-link">Player Testing</a>
+        <a href="#directory" data-nav="directory" class="nav-link">Directory</a>
+        <a href="#policies" data-nav="policies" class="nav-link">Policies</a>
       </nav>
 
       <div class="header-actions">
-        <a href="#membership" data-nav="membership" class="btn-header-pill">Become a Member</a>
+        <nav class="secondary-nav" aria-label="More pages">
+          <a href="#membership" data-nav="membership">Membership</a>
+          <a href="#help" data-nav="help">Help</a>
+          <a href="#news" data-nav="news">News</a>
+        </nav>
+        <a href="#membership" data-nav="membership" class="btn-header-pill">Renew Membership</a>
         <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">
           <svg viewBox="0 0 28 20" width="26" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
             <line x1="2" y1="5" x2="26" y2="5"/>
@@ -66,14 +70,17 @@
 
   <div class="mobile-drawer" id="mobileDrawer" hidden>
     <div class="mobile-drawer-inner">
-      <a href="#home" data-nav="home" class="drawer-link">Home</a>
-      <a href="#about" data-nav="about" class="drawer-link">New Here &amp; About <span class="drawer-hint">Join steps, lessons, ratings, board</span></a>
-      <a href="#play" data-nav="play" class="drawer-link">Courts &amp; Play <span class="drawer-hint">Weekly schedule, CourtReserve, Gizmo, ball machine</span></a>
-      <a href="#events" data-nav="events" class="drawer-link">Events <span class="drawer-hint">Calendar &amp; one-tap iPhone .ics</span></a>
+      <a href="#home" data-nav="home" class="drawer-link">Home <span class="drawer-hint">Today’s play, this week, and member tools</span></a>
+      <a href="#play" data-nav="play" class="drawer-link">Playtimes <span class="drawer-hint">Court schedules, CourtReserve, Gizmo, court map</span></a>
+      <a href="#events" data-nav="events" class="drawer-link">Club Events <span class="drawer-hint">Calendar &amp; one-tap iPhone .ics</span></a>
+      <a href="#testing" data-nav="testing" class="drawer-link">Player Testing <span class="drawer-hint">Ratings, Step-Up, evaluation request</span></a>
+      <a href="#directory" data-nav="directory" class="drawer-link">Player Directory <span class="drawer-hint">Members-only sample directory (fictional names)</span></a>
+      <a href="#policies" data-nav="policies" class="drawer-link">Bylaws &amp; Court Rules <span class="drawer-hint">Searchable policies and official PDFs</span></a>
+      <p class="drawer-more-label">More</p>
+      <a href="#membership" data-nav="membership" class="drawer-link">Membership &amp; Renewal <span class="drawer-hint">Dues, drop-box, CourtReserve payment</span></a>
+      <a href="#help" data-nav="help" class="drawer-link">Help / FAQ <span class="drawer-hint">Self-serve answers, contacts, request forms</span></a>
       <a href="#news" data-nav="news" class="drawer-link">News <span class="drawer-hint">Board updates &amp; announcements</span></a>
-      <a href="#policies" data-nav="policies" class="drawer-link">Policies &amp; Info <span class="drawer-hint">Searchable bylaws, rules, PDFs</span></a>
-      <a href="#contact" data-nav="contact" class="drawer-link">Contact <span class="drawer-hint">Emails, location, Sports Desk</span></a>
-      <a href="#membership" data-nav="membership" class="drawer-cta">Become a Member</a>
+      <a href="#membership" data-nav="membership" class="drawer-cta">Renew Membership</a>
       <a href="https://mobileapp.courtreserve.com/Online/Account/LogIn/16051" target="_blank" rel="noopener noreferrer" class="drawer-secondary-cta">Open CourtReserve ↗</a>
     </div>
   </div>
@@ -81,116 +88,86 @@
   <main id="main" class="main-content">
     <section id="view-home" class="view active" aria-labelledby="home-heading">
       <div class="hero-frame">
-        <div class="hero">
+        <div class="hero hero-member">
           <div class="hero-media">
-            <img src="images/courts-sunny.jpg" alt="Sunny outdoor pickleball courts with stadium lighting poles" class="hero-img" />
+            <img src="images/courts-sunny.jpg" alt="Robson Ranch pickleball courts on a sunny morning" class="hero-img" />
             <div class="hero-scrim"></div>
           </div>
           <div class="hero-content">
-            <h1 id="home-heading">16 dedicated pickleball courts in the heart of Robson Ranch</h1>
-            <p class="hero-sub">Eloy, Arizona · 670 active members · Free beginner lessons · 8 lighted courts</p>
+            <p class="hero-kicker">Private club · Residents &amp; homeowners</p>
+            <h1 id="home-heading">Your club home at Robson Ranch</h1>
+            <p class="hero-sub" id="homeDateLine">Today’s play, court tools, and announcements — in one place for members.</p>
             <div class="hero-actions">
-              <a href="#membership" data-nav="membership" class="btn-pill btn-pill-white">Become a Member</a>
-              <a href="#play" data-nav="play" class="btn-pill btn-pill-outline-white">Court Schedule &amp; Play</a>
+              <a href="#today-play" class="btn-pill btn-pill-white">See Today’s Play</a>
+              <a href="https://mobileapp.courtreserve.com/Online/Account/LogIn/16051" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-outline-white">Reserve a Court ↗</a>
             </div>
           </div>
         </div>
       </div>
 
-      <section class="band band-teal">
+      <section class="band band-teal" id="today-play">
         <div class="container">
-          <div class="band-header-center">
-            <h2>Not Just Great Courts. A Complete Club.</h2>
-            <p>Everything you need to play, learn, and connect at Robson Ranch—all in one place.</p>
+          <div class="band-header-split band-header-light">
+            <div>
+              <h2 id="todayHeading">Today’s Club Play</h2>
+              <p>Drawn from the official Nov 15–28, 2026 weekly schedule. Filter the full week on Courts &amp; Play.</p>
+            </div>
+            <a href="#play" data-nav="play" class="btn-pill btn-pill-white">Full Court Schedule</a>
           </div>
-          <div class="checklist-grid" id="homeChecklist"></div>
-          <div class="band-actions-center">
-            <a href="#play" data-nav="play" class="btn-pill btn-pill-white">See Weekly Schedule</a>
-            <a href="#about" data-nav="about" class="btn-pill btn-pill-white">New Here? Start Here</a>
+          <div class="schedule-list" id="todayPlay"></div>
+        </div>
+      </section>
+
+      <section class="band band-white" id="this-week">
+        <div class="container">
+          <div class="band-header-split">
+            <div>
+              <h2>This Week at a Glance</h2>
+              <p>Tap a day to preview rated play, lessons, and special sessions. Evening reservable courts and HOA Paddle Up run daily.</p>
+            </div>
           </div>
+          <div class="day-tabs week-tabs" id="weekDayTabs" role="tablist" aria-label="Select a day this week"></div>
+          <div class="schedule-list" id="weekGlance"></div>
         </div>
       </section>
 
       <section class="band band-lime">
         <div class="container">
-          <div class="vision-grid">
-            <div class="vision-copy">
-              <h2>Our Mission at Robson Ranch</h2>
-              <p>
-                The Robson Ranch Pickleball Club facilitates the growth of pickleball across our Eloy, Arizona community—offering organized recreational and competitive play, free beginner instruction, and skill development in a collegial, sportsmanlike environment.
-              </p>
-              <p>
-                With 16 state-of-the-art courts (8 lighted until 10:00 PM) next to the Sports Club and 670 active members, the club also funds ongoing facility enhancements—including an approved HOA dinking wall and water/ice pavilion awaiting developer sign-off.
-              </p>
-              <div class="vision-cta">
-                <a href="#play" data-nav="play" class="btn-pill btn-pill-white">Explore Courts &amp; Rules</a>
-              </div>
-            </div>
-
-            <div class="vision-diagram">
-              <div class="diagram-card">
-                <svg viewBox="0 0 680 250" class="court-svg-mini" role="img" aria-label="16-court Robson Ranch pickleball complex layout">
-                  <rect x="0" y="0" width="680" height="250" rx="10" fill="#F6F7F2"/>
-                  <text x="20" y="24" font-size="11" font-weight="700" fill="#195051">ROBSON BLVD &amp; SPORTS CLUB SIDE (8 LIGHTED COURTS)</text>
-                  <rect x="20" y="36" width="68" height="78" rx="6" fill="#94B6A1" stroke="#fff" stroke-width="2"/>
-                  <text x="54" y="72" text-anchor="middle" font-size="14" font-weight="700" fill="#111">Ct 1</text>
-                  <text x="54" y="90" text-anchor="middle" font-size="10" fill="#111">HOA</text>
-                  <rect x="94" y="36" width="68" height="78" rx="6" fill="#94B6A1" stroke="#fff" stroke-width="2"/>
-                  <text x="128" y="72" text-anchor="middle" font-size="14" font-weight="700" fill="#111">Ct 2</text>
-                  <text x="128" y="90" text-anchor="middle" font-size="10" fill="#111">HOA</text>
-                  <rect x="172" y="36" width="68" height="78" rx="6" fill="#195051" stroke="#fff" stroke-width="2"/>
-                  <text x="206" y="72" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ct 3</text>
-                  <text x="206" y="90" text-anchor="middle" font-size="10" fill="#D4E0AD">Club</text>
-                  <rect x="246" y="36" width="68" height="78" rx="6" fill="#195051" stroke="#fff" stroke-width="2"/>
-                  <text x="280" y="72" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ct 4</text>
-                  <text x="280" y="90" text-anchor="middle" font-size="10" fill="#D4E0AD">Club</text>
-                  <rect x="320" y="36" width="68" height="78" rx="6" fill="#195051" stroke="#fff" stroke-width="2"/>
-                  <text x="354" y="72" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ct 5</text>
-                  <text x="354" y="90" text-anchor="middle" font-size="10" fill="#D4E0AD">Club</text>
-                  <rect x="394" y="36" width="68" height="78" rx="6" fill="#195051" stroke="#fff" stroke-width="2"/>
-                  <text x="428" y="72" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ct 6</text>
-                  <text x="428" y="90" text-anchor="middle" font-size="10" fill="#D4E0AD">Club</text>
-                  <rect x="468" y="36" width="68" height="78" rx="6" fill="#195051" stroke="#fff" stroke-width="2"/>
-                  <text x="502" y="72" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ct 7</text>
-                  <text x="502" y="90" text-anchor="middle" font-size="10" fill="#D4E0AD">Club</text>
-                  <rect x="542" y="36" width="68" height="78" rx="6" fill="#195051" stroke="#fff" stroke-width="2"/>
-                  <text x="576" y="72" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ct 8</text>
-                  <text x="576" y="90" text-anchor="middle" font-size="10" fill="#D4E0AD">Club</text>
-                  <rect x="618" y="36" width="44" height="78" rx="6" fill="#D4E0AD" stroke="#195051" stroke-width="1.5"/>
-                  <text x="640" y="70" text-anchor="middle" font-size="15">💡</text>
-                  <text x="640" y="90" text-anchor="middle" font-size="10" font-weight="700" fill="#195051">8 Lit</text>
-                  <rect x="20" y="132" width="68" height="78" rx="6" fill="#195051" stroke="#fff" stroke-width="2"/>
-                  <text x="54" y="168" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ct 9</text>
-                  <text x="54" y="186" text-anchor="middle" font-size="10" fill="#D4E0AD">Club</text>
-                  <rect x="94" y="132" width="68" height="78" rx="6" fill="#195051" stroke="#fff" stroke-width="2"/>
-                  <text x="128" y="168" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ct 10</text>
-                  <text x="128" y="186" text-anchor="middle" font-size="10" fill="#D4E0AD">Club</text>
-                  <rect x="172" y="132" width="68" height="78" rx="6" fill="#195051" stroke="#fff" stroke-width="2"/>
-                  <text x="206" y="168" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ct 11</text>
-                  <text x="206" y="186" text-anchor="middle" font-size="10" fill="#D4E0AD">Club</text>
-                  <rect x="246" y="132" width="68" height="78" rx="6" fill="#195051" stroke="#fff" stroke-width="2"/>
-                  <text x="280" y="168" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ct 12</text>
-                  <text x="280" y="186" text-anchor="middle" font-size="10" fill="#D4E0AD">Club</text>
-                  <rect x="320" y="132" width="68" height="78" rx="6" fill="#195051" stroke="#fff" stroke-width="2"/>
-                  <text x="354" y="168" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ct 13</text>
-                  <text x="354" y="186" text-anchor="middle" font-size="10" fill="#D4E0AD">Club</text>
-                  <rect x="394" y="132" width="68" height="78" rx="6" fill="#195051" stroke="#fff" stroke-width="2"/>
-                  <text x="428" y="168" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Ct 14</text>
-                  <text x="428" y="186" text-anchor="middle" font-size="10" fill="#D4E0AD">Club</text>
-                  <rect x="468" y="132" width="68" height="78" rx="6" fill="#94B6A1" stroke="#fff" stroke-width="2"/>
-                  <text x="502" y="168" text-anchor="middle" font-size="14" font-weight="700" fill="#111">Ct 15</text>
-                  <text x="502" y="186" text-anchor="middle" font-size="10" fill="#111">HOA</text>
-                  <rect x="542" y="132" width="68" height="78" rx="6" fill="#94B6A1" stroke="#fff" stroke-width="2"/>
-                  <text x="576" y="168" text-anchor="middle" font-size="14" font-weight="700" fill="#111">Ct 16</text>
-                  <text x="576" y="186" text-anchor="middle" font-size="10" fill="#111">HOA</text>
-                  <text x="20" y="234" font-size="11" fill="#195051">Schematic concept layout: 16 courts total (HOA walk-up 1, 2, 15, 16 · Club/Reservable 3–14).</text>
-                </svg>
-              </div>
-              <p class="diagram-caption">
-                <strong>Concept layout:</strong> 16 dedicated courts next to the Robson Ranch Sports Club.<br/>
-                <strong>Amenities:</strong> 8 lighted courts, two Playmate ball machines at the Sports Desk, secure member drop-box, and approved HOA dinking wall &amp; water/ice pavilion pending developer sign-off.
-              </p>
-            </div>
+          <div class="band-header-center band-header-dark">
+            <h2>Member Tools</h2>
+            <p>The five things members use most — playtimes, events, testing, the directory, and the rules.</p>
+          </div>
+          <div class="action-tiles action-tiles-5">
+            <a href="#play" data-nav="play" class="action-tile">
+              <span class="card-eyebrow">1 · Playtimes</span>
+              <h3>Court Schedules</h3>
+              <p>Today’s and this week’s play, day and skill filters, court map, and CourtReserve booking.</p>
+              <span class="link-arrow">Open Playtimes →</span>
+            </a>
+            <a href="#events" data-nav="events" class="action-tile">
+              <span class="card-eyebrow">2 · Club Events</span>
+              <h3>Calendar</h3>
+              <p>Clinics, socials, and the March tournament — add any event to your phone with .ics.</p>
+              <span class="link-arrow">Open Events →</span>
+            </a>
+            <a href="#testing" data-nav="testing" class="action-tile">
+              <span class="card-eyebrow">3 · Player Testing</span>
+              <h3>Rating Evaluations</h3>
+              <p>How testing works, Nov 1–Mar 31 dates, Step-Up, and a demo sign-up request.</p>
+              <span class="link-arrow">Testing &amp; Step-Up →</span>
+            </a>
+            <a href="#directory" data-nav="directory" class="action-tile">
+              <span class="card-eyebrow">4 · Directory</span>
+              <h3>Player Directory</h3>
+              <p>Members-only sample directory (fictional names) with search, rating filters, and Contact Me.</p>
+              <span class="link-arrow">Open Directory →</span>
+            </a>
+            <a href="#policies" data-nav="policies" class="action-tile">
+              <span class="card-eyebrow">5 · Rules</span>
+              <h3>Bylaws &amp; Court Rules</h3>
+              <p>Search Guest Policy, Paddle Up, Code of Conduct, Ratings Policy, and official PDFs.</p>
+              <span class="link-arrow">Search Policies →</span>
+            </a>
           </div>
         </div>
       </section>
@@ -199,123 +176,12 @@
         <div class="container">
           <div class="band-header-split">
             <div>
-              <h2>This Season at Robson Ranch</h2>
-              <p>Real highlights from the November 13, 2026 General Meeting and November 15–28 Court Schedule.</p>
+              <h2>Latest Announcements</h2>
+              <p>From the November 13, 2026 General Meeting and current club programs.</p>
             </div>
             <a href="#news" data-nav="news" class="btn-pill btn-pill-teal">All Club News</a>
           </div>
           <div class="highlights-grid" id="homeHighlights"></div>
-          <div class="quick-links-row">
-            <a href="#events" data-nav="events" class="quick-row-card">
-              <h3>Events &amp; One-Tap Calendar</h3>
-              <p>Beginner clinics, Christmas on the Courts, and March 11–13 Tournament with .ics export.</p>
-              <span class="link-arrow">View Events →</span>
-            </a>
-            <a href="#policies" data-nav="policies" class="quick-row-card">
-              <h3>Searchable Bylaws &amp; Rules</h3>
-              <p>Look up Guest Policy, Ratings, Code of Conduct, or HOA Paddle Up rules in seconds.</p>
-              <span class="link-arrow">Search Rules →</span>
-            </a>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <section id="view-about" class="view" aria-labelledby="about-heading" hidden>
-      <div class="page-intro">
-        <div class="container">
-          <h1 id="about-heading">New Here &amp; Our Story</h1>
-          <p class="page-lead">Whether you are brand new to pickleball or bringing an established rating to Robson Ranch, here is how to get started, who leads the club, and how ratings work.</p>
-        </div>
-      </div>
-
-      <section class="band band-teal">
-        <div class="container">
-          <div class="split-feature">
-            <div class="split-media">
-              <img src="images/paddle-balls.jpg" alt="Pickleball paddle and perforated outdoor balls on court" class="feature-photo" loading="lazy" />
-            </div>
-            <div class="split-copy">
-              <h2>Three Steps to Your First Game</h2>
-              <div class="steps-stack">
-                <div class="step-row">
-                  <span class="step-num">1</span>
-                  <div>
-                    <strong>Pick Your Starting Path</strong>
-                    <p>Never played? Come to free Beginner Lessons Mondays or Wednesdays (8–10 AM, HOA Courts 1–2). Already rated? Join level play or bring a documented USAP, DUPR, or IPTPA rating for review.</p>
-                  </div>
-                </div>
-                <div class="step-row">
-                  <span class="step-num">2</span>
-                  <div>
-                    <strong>Sign the HOA Waiver &amp; Join</strong>
-                    <p>Sign the Robson Ranch HOA Liability Waiver at the Sports Desk (5750 N. Robson Blvd) and complete your club membership application. Dues are prorated by month ($30 Jan–Sep, $15 Oct, $10 Nov, $5 Dec).</p>
-                  </div>
-                </div>
-                <div class="step-row">
-                  <span class="step-num">3</span>
-                  <div>
-                    <strong>Book Courts &amp; Join Play Gizmo!</strong>
-                    <p>Use CourtReserve to reserve Courts 3–14 up to 3 days ahead (6:30 AM window), or register for weekly level-based Play Gizmo! sessions by Wednesday at 11:00 PM.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="split-actions">
-                <a href="#membership" data-nav="membership" class="btn-pill btn-pill-white">View Membership Options</a>
-                <a href="#play" data-nav="play" class="btn-pill btn-pill-outline-white">Weekly Schedule</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="band band-white">
-        <div class="container">
-          <div class="band-header-split">
-            <div>
-              <h2>Skill Ratings &amp; Level Advancement</h2>
-              <p>RRAZ-PC ratings guide organized play from 2.0 Beginner through 4.5–5.0 Advanced (per Bylaws &amp; Ratings Policy).</p>
-            </div>
-          </div>
-          <div class="cards-grid cards-grid-3" id="ratingsGrid"></div>
-          <div class="callout-card">
-            <h3>Testing &amp; Transferring a Rating</h3>
-            <p>
-              <strong>Newcomers:</strong> Start at 2.0 (free beginner clinics) or request a placement review at <a href="mailto:rraz.pickleball.ratings@gmail.com">rraz.pickleball.ratings@gmail.com</a>.<br/>
-              <strong>Existing USAP / DUPR / IPTPA / APPL players:</strong> Email documented rating history to <a href="mailto:rrpbctreasure@gmail.com">rrpbctreasure@gmail.com</a> (no automatic self-rating transfers from unverified apps).<br/>
-              <strong>Testing Window:</strong> Club skills testing runs November 1 – March 31. Step-Up Testing requires 48+ points on the official skills assessment and verified match play.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="band band-sage">
-        <div class="container">
-          <div class="band-header-center band-header-dark">
-            <h2>2026–2027 Board of Directors</h2>
-            <p>Elected volunteer leaders serving Robson Ranch Pickleball Club (per official Bylaws &amp; Nov 13, 2026 General Meeting).</p>
-          </div>
-          <div class="cards-grid cards-grid-3" id="boardGrid"></div>
-        </div>
-      </section>
-
-      <section class="band band-white">
-        <div class="container">
-          <div class="story-grid">
-            <div class="story-media">
-              <img src="images/sonoran-desert.jpg" alt="Sonoran desert saguaro landscape near Eloy, Arizona" class="feature-photo" loading="lazy" />
-            </div>
-            <div class="story-copy">
-              <h2>Our Desert Pickleball Community</h2>
-              <p>
-                Nestled in the Santa Cruz Valley between Phoenix and Tucson, Robson Ranch has grown into one of Arizona's most active 55+ pickleball communities—now 670 members strong, with a $33,891 treasury balance and a 2027 budget approved 264–6.
-              </p>
-              <p>
-                More than 52 mentored players have graduated from our 2.5s &amp; A Coach program this season, and our volunteer instructors keep free beginner lessons welcoming every Monday and Wednesday morning.
-              </p>
-              <a href="#contact" data-nav="contact" class="btn-pill btn-pill-teal">Contact the Club</a>
-            </div>
-          </div>
         </div>
       </section>
     </section>
@@ -323,7 +189,7 @@
     <section id="view-play" class="view" aria-labelledby="play-heading" hidden>
       <div class="page-intro">
         <div class="container">
-          <h1 id="play-heading">Courts, Schedule &amp; Play</h1>
+          <h1 id="play-heading">Playtimes &amp; Court Schedules</h1>
           <p class="page-lead">Nov 15–28, 2026 court assignments across all 16 courts, CourtReserve booking steps, Play Gizmo! weekly sign-ups, and ball machine rentals.</p>
         </div>
       </div>
@@ -333,7 +199,7 @@
           <div class="band-header-split band-header-light">
             <div>
               <h2>Weekly Court Schedule</h2>
-              <p>Filter by day and skill level (based on official Nov 15–28 schedule &amp; Oct 23 HOA Paddle Up rules).</p>
+              <p>Filter by day and skill level (official Nov 15–28 schedule &amp; Oct 23 HOA Paddle Up rules).</p>
             </div>
             <a href="https://mobileapp.courtreserve.com/Online/Account/LogIn/16051" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-white">Open CourtReserve ↗</a>
           </div>
@@ -350,7 +216,7 @@
           <div class="band-header-split">
             <div>
               <h2>Interactive 16-Court Complex Map</h2>
-              <p>Tap any court below to see surface designation, lighting, HOA walk-up rules, or reservation eligibility.</p>
+              <p>Tap any court to see lighting, HOA walk-up rules, or reservation eligibility.</p>
             </div>
           </div>
           <div class="court-map-shell">
@@ -376,7 +242,7 @@
                 <li><strong>Eligible Courts:</strong> Courts 3–14 (1-hour or 2-hour slots).</li>
                 <li><strong>Booking Window:</strong> Opens at 6:30 AM up to 3 days in advance.</li>
                 <li><strong>Open Reservation:</strong> Check the <em>Open Reservation</em> box when inviting other club members to fill empty spots.</li>
-                <li><strong>10-Minute Rule:</strong> Unclaimed reservations may be forfeited 10 minutes after start time.</li>
+                <li><strong>10-Minute Rule:</strong> Unclaimed reservations may be forfeited 10 minutes after start time and become Paddle Up courts.</li>
               </ul>
               <a href="https://mobileapp.courtreserve.com/Online/Account/LogIn/16051" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-teal">Log In to CourtReserve ↗</a>
             </div>
@@ -396,9 +262,10 @@
           <div class="callout-card mt-24">
             <h3>Playmate Ball Machines &amp; HOA Paddle Up</h3>
             <p>
-              <strong>Ball Machines:</strong> Two Playmate ball machines are available at the Sports Desk (reserve Court 3–14 in CourtReserve first, check out keys/remotes with your HOA ID).<br/>
-              <strong>HOA Paddle Up (Eff. Oct 23, 2026):</strong> Courts 1, 2, 15, and 16 follow HOA open drop-in paddle rack rotation whenever not scheduled for beginner lessons or HOA classes.
+              <strong>Ball Machines:</strong> Two Playmate ball machines are available at the Sports Desk after required training (reserve a court in CourtReserve first, then check out keys/remotes with your HOA ID).<br/>
+              <strong>HOA Paddle Up (Eff. Oct 23, 2026):</strong> Courts 1, 2, 15, and 16 follow HOA open drop-in paddle rotation whenever not scheduled for beginner lessons or HOA classes.
             </p>
+            <p style="margin-bottom:0;"><a href="#help" data-nav="help" data-scroll="faq-ball-machine" class="underlined-link">Ball machine training &amp; FAQ →</a></p>
           </div>
         </div>
       </section>
@@ -407,8 +274,8 @@
     <section id="view-events" class="view" aria-labelledby="events-heading" hidden>
       <div class="page-intro">
         <div class="container">
-          <h1 id="events-heading">Upcoming Events &amp; Clinics</h1>
-          <p class="page-lead">Confirmed club clinics, socials, and tournaments—with one-tap iPhone / Google Calendar (.ics) export in Arizona time (America/Phoenix).</p>
+          <h1 id="events-heading">Club Events</h1>
+          <p class="page-lead">Confirmed club clinics, socials, and tournaments — with one-tap iPhone / Google Calendar (.ics) export in Arizona time (America/Phoenix).</p>
         </div>
       </div>
 
@@ -425,11 +292,11 @@
       <section class="band band-sage">
         <div class="container">
           <div class="band-header-center band-header-dark">
-            <h2>Connect and Play</h2>
-            <p>Looking for weekly open play, beginner clinics, or CourtReserve partner spots? View today's live court assignments.</p>
+            <h2>Need a court this week?</h2>
+            <p>Check today’s assignments or reserve Courts 3–14 on CourtReserve.</p>
             <div class="band-actions-center">
               <a href="#play" data-nav="play" class="btn-pill btn-pill-teal">View Weekly Schedule</a>
-              <a href="#membership" data-nav="membership" class="btn-pill btn-pill-white">Become a Member</a>
+              <a href="https://mobileapp.courtreserve.com/Online/Account/LogIn/16051" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-white">Reserve a Court ↗</a>
             </div>
           </div>
         </div>
@@ -440,7 +307,7 @@
       <div class="page-intro">
         <div class="container">
           <h1 id="news-heading">Club News &amp; Updates</h1>
-          <p class="page-lead">Meeting takeaways, budget votes, facility updates, and seasonal program announcements.</p>
+          <p class="page-lead">Meeting takeaways, budget votes, facility updates, and seasonal program announcements for members.</p>
         </div>
       </div>
 
@@ -449,15 +316,156 @@
           <div class="cards-grid cards-grid-2" id="newsList"></div>
         </div>
       </section>
+    </section>
 
-      <section class="band band-lime">
+    <section id="view-testing" class="view" aria-labelledby="testing-heading" hidden>
+      <div class="page-intro">
         <div class="container">
-          <div class="band-header-center band-header-dark">
-            <h2>Stay in the Loop</h2>
-            <p>Club announcements and Treasurer's Reports are sent via <a href="mailto:robsonranchpickleball@gmail.com">robsonranchpickleball@gmail.com</a> and posted at the courts.</p>
-            <div class="band-actions-center">
-              <a href="#policies" data-nav="policies" class="btn-pill btn-pill-teal">Read Meeting Minutes &amp; Bylaws</a>
+          <h1 id="testing-heading">Player Testing &amp; Rating Evaluations</h1>
+          <p class="page-lead">How club skill ratings are assigned and advanced — including the November 1 – March 31 testing season, the Step-Up process, and a demo request form. Drawn from the official RRAZ-PC Ratings Policy (October 9, 2026).</p>
+        </div>
+      </div>
+
+      <section class="band band-teal">
+        <div class="container">
+          <div class="band-header-split band-header-light">
+            <div>
+              <h2>How Testing Works</h2>
+              <p>Club testing is voluntary and offered <strong>November 1 through March 31</strong>. Members may test upward only one rating level at a time (2.5 → 3.0 → 3.5 → 4.0 → 4.5).</p>
             </div>
+          </div>
+          <div class="checklist-grid testing-steps">
+            <div class="checklist-item"><strong>1. Self-assessment first</strong> – Track scores from four gender-specific round robins at your current club rating and complete the Skills Self-Assessment for the rating you want (on CourtReserve under “Rating Self-Assessment”).</div>
+            <div class="checklist-item"><strong>2. Request a test date</strong> – When you are ready, email the Testing Coordinator to be scheduled first-come, first-served.</div>
+            <div class="checklist-item"><strong>3. Test format</strong> – One gender-specific six-game round robin with Control Players. Games are to 11, win by one (no rally scoring). A Court Monitor validates the scorecard.</div>
+            <div class="checklist-item"><strong>4. The 48-point standard</strong> – At least 48 points over six games qualifies you to advance. A score of 45–47 allows one retest with an Outside Observer. Below 45, apply again in a later eligible season.</div>
+          </div>
+          <div class="callout-card mt-24 testing-contact-card">
+            <h3>Who to Contact</h3>
+            <p>
+              <strong>Testing Coordinator</strong> (schedule a test or retest): <a href="mailto:rraz.pickleball.ratings@gmail.com" class="underlined-link">rraz.pickleball.ratings@gmail.com</a><br/>
+              <strong>Treasurer</strong> (rating records, transfers, and roster updates): <a href="mailto:rrpbctreasure@gmail.com" class="underlined-link">rrpbctreasure@gmail.com</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band-white">
+        <div class="container">
+          <div class="band-header-split">
+            <div>
+              <h2>The Step-Up Process</h2>
+              <p>After your testing date is confirmed, you may play at the requested level to decide whether to continue with the scheduled test.</p>
+            </div>
+          </div>
+          <div class="cards-grid cards-grid-3">
+            <article class="info-card">
+              <span class="card-eyebrow">After a date is set</span>
+              <h3>Limited Step-Up Play</h3>
+              <p>You may join Step-Up play at the requested level for up to two round robins. Track your scores and then decide whether to take the scheduled advancement test.</p>
+            </article>
+            <article class="info-card">
+              <span class="card-eyebrow">CourtReserve only</span>
+              <h3>Register — No Walk-Ons</h3>
+              <p>Applicants must register on CourtReserve to participate in Step-Up. Walk-ons are not allowed. Missed assessments normally go to the end of the queue (reschedules possible for illness or emergency with two hours’ notice).</p>
+            </article>
+            <article class="info-card">
+              <span class="card-eyebrow">New members</span>
+              <h3>Incoming Ratings</h3>
+              <p>Residents with a verifiable prior RRAZ-PC, qualifying other-club (written proof within 15 days; provisional 30 days), or qualifying APPL rating start at the highest of those. DUPR, IPTPA, UTR-P, and self-ratings are not accepted on their own. No verified rating? You start at Novice 2.0 and attend free Beginner Classes (Mon/Wed 8–10 AM, HOA Courts 1–2).</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band-sage" id="testing-request">
+        <div class="container">
+          <div class="form-shell">
+            <div class="form-intro">
+              <span class="sample-badge">Demo Only — Nothing Is Submitted to the Club</span>
+              <h2>Rating Evaluation Request</h2>
+              <p>Preview the sign-up a member would send the Testing Coordinator. In this demo, submitting only shows a <strong>Board Inbox Preview</strong> — nothing is emailed or stored on a server. Real requests go to <a href="mailto:rraz.pickleball.ratings@gmail.com">rraz.pickleball.ratings@gmail.com</a>.</p>
+            </div>
+            <form id="form-rating" class="rrpc-form request-form" data-form-id="rating">
+              <div class="form-grid">
+                <label class="field"><span>Full Name *</span><input type="text" name="name" required placeholder="Your name" /></label>
+                <label class="field"><span>Email *</span><input type="email" name="email" required placeholder="you@example.com" /></label>
+                <label class="field">
+                  <span>Current Club Rating *</span>
+                  <select name="currentRating" required>
+                    <option value="2.0">2.0</option>
+                    <option value="2.5" selected>2.5</option>
+                    <option value="3.0">3.0</option>
+                    <option value="3.5">3.5</option>
+                    <option value="4.0">4.0</option>
+                    <option value="4.5">4.5</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Rating Sought *</span>
+                  <select name="soughtRating" required>
+                    <option value="2.5">2.5</option>
+                    <option value="3.0" selected>3.0</option>
+                    <option value="3.5">3.5</option>
+                    <option value="4.0">4.0</option>
+                    <option value="4.5">4.5</option>
+                  </select>
+                </label>
+              </div>
+              <label class="checkbox-field">
+                <input type="checkbox" name="selfAssessment" required />
+                <span>I have completed (or will complete) the Skills Self-Assessment and tracked scores from four gender-specific round robins at my current rating. *</span>
+              </label>
+              <label class="field">
+                <span>Notes for the Testing Coordinator</span>
+                <textarea name="notes" rows="3" placeholder="Preferred days, travel dates, or questions about Step-Up play."></textarea>
+              </label>
+              <div class="form-actions">
+                <button type="submit" class="btn-pill btn-pill-teal">Preview Inbox Item</button>
+              </div>
+            </form>
+            <div class="inbox-preview-panel" id="testingInboxPanel">
+              <h3>Board Inbox Preview <span class="sample-badge">This Session Only</span></h3>
+              <p class="card-meta">Demo evaluation requests stay in this browser tab so you can show a sorted Testing Coordinator queue. They are not emailed or saved to a server.</p>
+              <div id="testingInboxList"><p class="card-meta" style="margin:0;">No demo requests yet. Submit the form above to see a sample inbox item.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="view-directory" class="view" aria-labelledby="directory-heading" hidden>
+      <div class="page-intro">
+        <div class="container">
+          <h1 id="directory-heading">Player Directory</h1>
+          <p class="page-lead">A members-only directory so players can find one another by name or rating. This demo is locked behind a mock sign-in and uses <strong>clearly labeled fictional sample names only</strong> — the real club roster is not used.</p>
+        </div>
+      </div>
+
+      <section class="band band-white">
+        <div class="container">
+          <div id="directoryGate" class="directory-gate">
+            <span class="sample-badge">Members Only · Demo Sign-In</span>
+            <h2>Sign in to view the directory</h2>
+            <p>The player directory is for Robson Ranch Pickleball Club members only. This is a <strong>demo sign-in</strong> — no real account, email, or password is required or stored. After you sign in, you will see a searchable sample list of fictional members.</p>
+            <button type="button" class="btn-pill btn-pill-teal" id="demoSignInBtn">Demo Member Sign-In</button>
+          </div>
+
+          <div id="directoryApp" hidden>
+            <div class="directory-toolbar">
+              <div>
+                <span class="sample-badge">Sample Directory — Fictional Names Only</span>
+                <p class="card-meta" style="margin:8px 0 0;">These names are invented for this concept demo. They are not Robson Ranch members and are not taken from the club roster.</p>
+              </div>
+              <button type="button" class="btn-pill btn-pill-outline-teal" id="demoSignOutBtn">Sign Out</button>
+            </div>
+            <div class="search-bar directory-search">
+              <label for="directorySearch" class="sr-only">Search sample directory by name</label>
+              <input type="search" id="directorySearch" placeholder="Search by name..." />
+            </div>
+            <div class="level-chips" id="directoryRatingChips" role="group" aria-label="Filter sample directory by rating"></div>
+            <p class="search-count" id="directoryCount"></p>
+            <div class="directory-list" id="directoryList"></div>
           </div>
         </div>
       </section>
@@ -466,27 +474,34 @@
     <section id="view-membership" class="view" aria-labelledby="membership-heading" hidden>
       <div class="page-intro">
         <div class="container">
-          <h1 id="membership-heading">Join the Robson Ranch Pickleball Club</h1>
-          <p class="page-lead">Robson Ranch residents and renters are welcome—whether you are picking up a paddle for the first time or competing in 4.5+ play.</p>
+          <h1 id="membership-heading">Membership &amp; Renewal</h1>
+          <p class="page-lead">The Robson Ranch Pickleball Club is a <strong>private club</strong> for Robson Ranch homeowners, residents, and qualified tenants only. Non-residents are ineligible for membership (Bylaws, Articles VI–VII).</p>
         </div>
       </div>
 
       <section class="band band-teal">
         <div class="container">
-          <div class="split-feature">
-            <div class="split-media">
-              <img src="images/sonoran-sunset.jpg" alt="Warm Arizona desert sunset at Robson Ranch" class="feature-photo" loading="lazy" />
+          <div class="band-header-split band-header-light">
+            <div>
+              <h2>Renew for the Coming Year</h2>
+              <p>Annual dues are payable by January 31. Members in good standing who are current on dues may vote and take part in all club events.</p>
             </div>
-            <div class="split-copy">
-              <h2>Why Join RRPC?</h2>
-              <p>
-                Membership unlocks full access to club-reserved court blocks (Courts 3–14), weekly Play Gizmo! level play, CourtReserve Open Reservations, official skills ratings &amp; Step-Up testing, two Playmate ball machines, socials, and the March In-House Tournament.
-              </p>
-              <p>
-                Every dollar of annual dues ($30 full year, prorated in fall) goes directly back into balls, equipment, clinics, and court improvements for our 670 members.
-              </p>
-              <a href="#apply-form" class="btn-pill btn-pill-white">Preview Membership Form ↓</a>
-            </div>
+            <a href="#renew-form" class="btn-pill btn-pill-white">Preview Renewal Form ↓</a>
+          </div>
+          <div class="payment-grid">
+            <article class="pay-card">
+              <h3>1. Check Drop-Box at the Courts</h3>
+              <p>Make checks payable to <strong>Robson Ranch Pickleball Club</strong>. Deposit your membership form and payment in the <strong>secure mailbox located at the Pickleball Courts</strong>.</p>
+            </article>
+            <article class="pay-card">
+              <h3>2. Email a Scanned Form</h3>
+              <p>Scan your completed membership form and email it to the Treasurer at <a href="mailto:rrpbctreasure@gmail.com" class="underlined-link" style="color:#fff;">rrpbctreasure@gmail.com</a>.</p>
+            </article>
+            <article class="pay-card">
+              <h3>3. Pay in CourtReserve</h3>
+              <p>For online renewal, log into CourtReserve, select <strong>My Membership</strong> and <strong>Pay Membership</strong>. New enrollment: select Annual Club Membership and pay online.</p>
+              <a href="https://mobileapp.courtreserve.com/Online/Account/LogIn/16051" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-white" style="margin-top:12px;">Open CourtReserve ↗</a>
+            </article>
           </div>
         </div>
       </section>
@@ -494,8 +509,8 @@
       <section class="band band-white">
         <div class="container">
           <div class="band-header-center band-header-dark">
-            <h2>Membership Options &amp; Prorated Dues</h2>
-            <p>Per official RRAZ-PC Bylaws: calendar-year membership runs January 1 – December 31, prorated by join month.</p>
+            <h2>Annual &amp; Prorated Dues</h2>
+            <p>Per the official 2026 Membership Form and Bylaws: calendar-year membership runs January 1 – December 31. Renewals are the full annual amount, due by January 31. Prorated amounts apply only to new members joining later in the year.</p>
           </div>
 
           <div class="pricing-grid">
@@ -503,19 +518,19 @@
               <div class="price-card-banner banner-1">
                 <img src="images/courts-sunny.jpg" alt="" aria-hidden="true" />
                 <div class="banner-overlay">
-                  <h3>Full-Year Member<br/><span>(Jan – Sep Join)</span></h3>
+                  <h3>Annual Renewal<br/><span>or Jan – Sep Join</span></h3>
                 </div>
               </div>
               <div class="price-card-body">
                 <p class="price-amount">$30 <span>/ year</span></p>
-                <p class="price-note">Best value for full-season &amp; year-round residents</p>
+                <p class="price-note">Standard annual dues for renewing members and anyone joining January–September.</p>
                 <ul class="price-features">
-                  <li>CourtReserve booking on Courts 3–14 (up to 3 days ahead)</li>
-                  <li>Weekly Play Gizmo! level play &amp; Drop-In blocks</li>
-                  <li>Official rating placement &amp; Nov–Mar Step-Up testing</li>
-                  <li>Access to 2 Playmate ball machines &amp; tournament entry eligibility</li>
+                  <li>Payable by January 31 for the coming year</li>
+                  <li>CourtReserve booking on Courts 3–14</li>
+                  <li>Play Gizmo! level play and club events</li>
+                  <li>Official ratings and Nov–Mar Step-Up testing</li>
                 </ul>
-                <a href="#apply-form" class="btn-pill btn-pill-teal price-select" data-join-month="jan-sep">Select $30 Option</a>
+                <a href="#renew-form" class="btn-pill btn-pill-teal price-select" data-join-month="jan-sep">Select $30 Renewal</a>
               </div>
             </article>
 
@@ -523,19 +538,19 @@
               <div class="price-card-banner banner-2">
                 <img src="images/paddle-balls.jpg" alt="" aria-hidden="true" />
                 <div class="banner-overlay">
-                  <h3>Fall Prorated<br/><span>(October Join)</span></h3>
+                  <h3>New Member<br/><span>October Join</span></h3>
                 </div>
               </div>
               <div class="price-card-body">
                 <p class="price-amount">$15 <span>/ remainder of year</span></p>
-                <p class="price-note">Ideal for fall arrivals joining October 1 – 31</p>
+                <p class="price-note">For new resident members joining October 1–31 only (50% of annual dues).</p>
                 <ul class="price-features">
                   <li>Full club privileges through December 31</li>
-                  <li>CourtReserve &amp; Play Gizmo! level sessions</li>
-                  <li>Free beginner lessons &amp; 2.5s &amp; A Coach mentoring</li>
-                  <li>Voting &amp; General Meeting participation</li>
+                  <li>Then renew at $30 for the following year</li>
+                  <li>CourtReserve, Play Gizmo!, and ratings access</li>
+                  <li>Must be a Robson Ranch resident, homeowner, or qualified tenant</li>
                 </ul>
-                <a href="#apply-form" class="btn-pill btn-pill-teal price-select" data-join-month="oct">Select $15 Option</a>
+                <a href="#renew-form" class="btn-pill btn-pill-teal price-select" data-join-month="oct">Select $15 New Join</a>
               </div>
             </article>
 
@@ -543,36 +558,43 @@
               <div class="price-card-banner banner-3">
                 <img src="images/sonoran-desert.jpg" alt="" aria-hidden="true" />
                 <div class="banner-overlay">
-                  <h3>Late-Year Prorated<br/><span>(Nov / Dec Join)</span></h3>
+                  <h3>New Member<br/><span>Nov / Dec Join</span></h3>
                 </div>
               </div>
               <div class="price-card-body">
                 <p class="price-amount">$10 / $5 <span>Nov · Dec</span></p>
-                <p class="price-note">$10 joining in November · $5 joining in December</p>
+                <p class="price-note">$10 joining in November (33%) · $5 joining in December (17%).</p>
                 <ul class="price-features">
-                  <li>Immediate CourtReserve &amp; club schedule access</li>
-                  <li>Christmas on the Courts &amp; holiday socials</li>
-                  <li>Skills testing window opens November 1</li>
-                  <li>Prepares you for January Skills &amp; Drills &amp; renewals</li>
+                  <li>Immediate club schedule and CourtReserve access</li>
+                  <li>Skills testing window is open November 1 – March 31</li>
+                  <li>Then renew at $30 by January 31</li>
+                  <li>Must live at Robson Ranch (own or qualified rental)</li>
                 </ul>
-                <a href="#apply-form" class="btn-pill btn-pill-teal price-select" data-join-month="nov">Select Nov / Dec Option</a>
+                <a href="#renew-form" class="btn-pill btn-pill-teal price-select" data-join-month="nov">Select Nov / Dec Join</a>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="band band-sage" id="apply-form">
+      <section class="band band-sage" id="renew-form">
         <div class="container">
           <div class="form-shell">
             <div class="form-intro">
               <span class="sample-badge">Demo Only — No Payment Collected</span>
-              <h2>Membership Application Mockup</h2>
-              <p>Preview how a digital application can calculate prorated dues and confirm the HOA waiver. Online payment is marked <em>coming soon</em>; this demo never transmits data or charges a card.</p>
+              <h2>Online Renewal Mockup</h2>
+              <p>Preview how a member could renew online, confirm residency, and see calculated dues. This demo never transmits data or charges a card. Real payment today is by court drop-box, emailed form, or CourtReserve My Membership.</p>
             </div>
 
             <form id="membershipForm" class="rrpc-form" novalidate>
               <div class="form-grid">
+                <label class="field">
+                  <span>Membership Type *</span>
+                  <select name="memberType" id="memberTypeSelect" required>
+                    <option value="Renewal" selected>Renewal (current member)</option>
+                    <option value="New Member">New resident / homeowner member</option>
+                  </select>
+                </label>
                 <label class="field">
                   <span>Full Name *</span>
                   <input type="text" name="fullName" required placeholder="Jane Resident" autocomplete="name" />
@@ -592,24 +614,33 @@
                 <label class="field">
                   <span>Residency Status *</span>
                   <select name="residency" required>
-                    <option value="Full-time Resident">Full-time Resident</option>
-                    <option value="Seasonal Resident">Seasonal Resident</option>
-                    <option value="Renter (with HOA privilege card)">Renter (with HOA privilege card)</option>
+                    <option value="Homeowner">Robson Ranch Homeowner</option>
+                    <option value="Resident (other)">Resident</option>
+                    <option value="Qualified Tenant">Qualified Tenant (renter with HOA privilege)</option>
+                  </select>
+                </label>
+                <label class="field" id="joinMonthField">
+                  <span>Dues Period *</span>
+                  <select name="joinMonth" id="joinMonthSelect" required>
+                    <option value="jan-sep" selected>Annual Renewal / Jan–Sep ($30.00)</option>
+                    <option value="oct">New member — October ($15.00)</option>
+                    <option value="nov">New member — November ($10.00)</option>
+                    <option value="dec">New member — December ($5.00)</option>
                   </select>
                 </label>
                 <label class="field">
-                  <span>Join Month (Prorated Dues) *</span>
-                  <select name="joinMonth" id="joinMonthSelect" required>
-                    <option value="jan-sep">January – September ($30.00)</option>
-                    <option value="oct">October ($15.00)</option>
-                    <option value="nov" selected>November ($10.00)</option>
-                    <option value="dec">December ($5.00)</option>
+                  <span>Preferred Payment Method</span>
+                  <select name="payMethod">
+                    <option value="Check drop-box at the Pickleball Courts">Check — secure mailbox at the courts</option>
+                    <option value="CourtReserve (My Membership)">CourtReserve — My Membership</option>
+                    <option value="Emailed form to rrpbctreasure@gmail.com">Email scanned form to Treasurer</option>
                   </select>
                 </label>
                 <label class="field">
                   <span>Current Skill Rating</span>
                   <select name="rating">
-                    <option value="Beginner (No rating yet — starting 2.0)">Beginner (No rating yet — starting 2.0)</option>
+                    <option value="Existing RRPC rating (unchanged)">Existing RRPC rating (unchanged)</option>
+                    <option value="Beginner (No rating yet — starting 2.0)">Beginner (starting 2.0)</option>
                     <option value="2.5">2.5</option>
                     <option value="3.0">3.0</option>
                     <option value="3.5">3.5</option>
@@ -617,12 +648,12 @@
                     <option value="4.5+">4.5+</option>
                   </select>
                 </label>
-                <label class="field">
-                  <span>Documented External Rating (Optional)</span>
-                  <input type="text" name="externalRating" placeholder="e.g., USAP 3.5 / DUPR 3.62" />
-                </label>
               </div>
 
+              <label class="checkbox-field">
+                <input type="checkbox" name="residencyConfirm" required />
+                <span>I confirm I am a Robson Ranch homeowner, resident, or qualified tenant, and I understand non-residents are ineligible for membership. *</span>
+              </label>
               <label class="checkbox-field">
                 <input type="checkbox" name="waiverSigned" required />
                 <span>I confirm I have signed (or will sign) the Robson Ranch HOA Liability Waiver at the Sports Desk (5750 N. Robson Blvd). *</span>
@@ -630,17 +661,168 @@
 
               <div class="dues-summary" id="duesSummary">
                 <div>
-                  <span class="dues-label">Estimated Prorated Dues</span>
-                  <strong id="duesAmount">$10.00</strong>
+                  <span class="dues-label">Estimated Dues</span>
+                  <strong id="duesAmount">$30.00</strong>
                 </div>
-                <span class="dues-status">Online payment: Coming Soon (Demo Preview)</span>
+                <span class="dues-status">Online payment: Demo Preview Only — use the court drop-box or CourtReserve for real payment</span>
               </div>
 
               <div class="form-actions">
-                <button type="submit" class="btn-pill btn-pill-teal">Preview Completed Application</button>
+                <button type="submit" class="btn-pill btn-pill-teal">Preview Renewal</button>
                 <button type="reset" class="btn-pill btn-pill-outline-teal">Clear Form</button>
               </div>
             </form>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="view-help" class="view" aria-labelledby="help-heading" hidden>
+      <div class="page-intro">
+        <div class="container">
+          <h1 id="help-heading">Help / FAQ</h1>
+          <p class="page-lead">Self-serve answers drawn from official club policies — so routine questions don’t have to start as a board email. Request forms below are Demo Only and are not sent anywhere real.</p>
+        </div>
+      </div>
+
+      <section class="band band-white">
+        <div class="container">
+          <div class="search-bar">
+            <label for="faqSearch" class="sr-only">Search frequently asked questions</label>
+            <input type="search" id="faqSearch" placeholder="Search FAQs, e.g., reserve, guests, 48 points, paddle up, ball machine..." />
+            <button type="button" id="clearFaqSearch" class="btn-pill btn-pill-outline-teal" hidden>Clear</button>
+          </div>
+          <p class="search-count" id="faqCount"></p>
+          <div class="faq-list" id="faqList"></div>
+        </div>
+      </section>
+
+      <section class="band band-lime" id="contact-directory">
+        <div class="container">
+          <div class="band-header-center band-header-dark">
+            <h2>Who to Contact, by Topic</h2>
+            <p>Use the right inbox the first time. These are the club’s real published email addresses and Sports Desk phone number.</p>
+          </div>
+          <div class="contact-cards-grid" id="contactDirectory"></div>
+
+          <div class="band-header-center band-header-dark" style="margin-top:48px; margin-bottom:24px;">
+            <h2>2026–2027 Board of Directors</h2>
+            <p>Elected volunteer leaders (per official Bylaws &amp; Nov 13, 2026 General Meeting).</p>
+          </div>
+          <div class="cards-grid cards-grid-3" id="boardGrid"></div>
+        </div>
+      </section>
+
+      <section class="band band-sage" id="request-forms">
+        <div class="container">
+          <div class="form-shell">
+            <div class="form-intro">
+              <span class="sample-badge">Demo Only — Nothing Is Submitted to the Club</span>
+              <h2>Member Request Forms</h2>
+              <p>Three common requests the board fields by email today. In this demo, submitting a form only shows a <strong>Board Inbox Preview</strong> — a picture of how an organized queue could look. Nothing is emailed or stored on a server.</p>
+            </div>
+
+            <p class="card-meta">Looking for a rating evaluation? Use the official <a href="#testing" data-nav="testing">Player Testing</a> request form (routes to the Testing Coordinator).</p>
+            <div class="request-tabs" role="tablist" aria-label="Choose a request form">
+              <button type="button" class="chip-btn active" data-form="machine">Ball Machine Training</button>
+              <button type="button" class="chip-btn" data-form="question">Question / Suggestion</button>
+            </div>
+
+            <form id="form-machine" class="rrpc-form request-form" data-form-id="machine">
+              <h3>Ball Machine Training Signup</h3>
+              <p class="card-meta">Training and the signed Safety Checklist / HOA Waiver are required before checkout at the Sports Desk (5750 N. Robson Blvd, 520-426-3355).</p>
+              <div class="form-grid">
+                <label class="field"><span>Full Name *</span><input type="text" name="name" required placeholder="Your name" /></label>
+                <label class="field"><span>Email *</span><input type="email" name="email" required placeholder="you@example.com" /></label>
+                <label class="field"><span>Phone</span><input type="tel" name="phone" placeholder="(520) 555-0199" /></label>
+                <label class="field">
+                  <span>Preferred Time Window</span>
+                  <select name="window">
+                    <option value="Weekday morning">Weekday morning</option>
+                    <option value="Weekday afternoon">Weekday afternoon</option>
+                    <option value="Weekend">Weekend</option>
+                    <option value="First available">First available</option>
+                  </select>
+                </label>
+              </div>
+              <label class="checkbox-field">
+                <input type="checkbox" name="waiverReady" required />
+                <span>I understand I must complete in-person training and the HOA Facilities Waiver before checking out a Playmate machine. *</span>
+              </label>
+              <div class="form-actions">
+                <button type="submit" class="btn-pill btn-pill-teal">Preview Inbox Item</button>
+              </div>
+            </form>
+
+            <form id="form-question" class="rrpc-form request-form" data-form-id="question" hidden>
+              <h3>General Question or Suggestion</h3>
+              <p class="card-meta">Routes to the general club inbox at <strong>robsonranchpickleball@gmail.com</strong>.</p>
+              <div class="form-grid">
+                <label class="field"><span>Full Name *</span><input type="text" name="name" required placeholder="Your name" /></label>
+                <label class="field"><span>Email *</span><input type="email" name="email" required placeholder="you@example.com" /></label>
+                <label class="field">
+                  <span>Topic</span>
+                  <select name="topic">
+                    <option value="Schedule / courts">Schedule / courts</option>
+                    <option value="Events">Events</option>
+                    <option value="Guest play">Guest play</option>
+                    <option value="Facilities">Facilities</option>
+                    <option value="Suggestion">Suggestion</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Preferred Reply</span>
+                  <select name="reply">
+                    <option value="Email">Email</option>
+                    <option value="Phone">Phone</option>
+                  </select>
+                </label>
+              </div>
+              <label class="field">
+                <span>Your Question or Suggestion *</span>
+                <textarea name="message" rows="4" required placeholder="How can the club help?"></textarea>
+              </label>
+              <div class="form-actions">
+                <button type="submit" class="btn-pill btn-pill-teal">Preview Inbox Item</button>
+              </div>
+            </form>
+
+            <div class="inbox-preview-panel" id="inboxPanel">
+              <h3>Board Inbox Preview <span class="sample-badge">This Session Only</span></h3>
+              <p class="card-meta">These demo requests stay in this browser tab so you can show how a sorted board queue might look. They are not emailed or saved to a server.</p>
+              <div id="inboxList"><p class="card-meta" style="margin:0;">No demo requests yet. Submit a form above to see a sample inbox item.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band-white" id="real-vs-sample">
+        <div class="container">
+          <div class="callout-card">
+            <h3>What Is Real vs. Sample in This Concept Demo</h3>
+            <div class="truth-grid">
+              <div>
+                <h4>Verified Club Data (Real)</h4>
+                <ul class="clean-list">
+                  <li>Private-club eligibility: homeowners, residents, or qualified tenants; non-residents are ineligible</li>
+                  <li>All 16-court details, Nov 15–28 weekly schedule, and Oct 23 HOA Paddle Up rules</li>
+                  <li>2026–2027 Board, 670 members, $33,891 balance, 264–6 budget vote</li>
+                  <li>Bylaws, Code of Conduct, Guest Policy, Ratings &amp; Step-Up Policy (48+ pts)</li>
+                  <li>CourtReserve URL, Play Gizmo!, Playmate machines, real club emails</li>
+                  <li>How to pay: checks to the secure mailbox at the courts, emailed forms, or CourtReserve My Membership</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Demo Placeholders (Sample / Omitted)</h4>
+                <ul class="clean-list">
+                  <li><strong>Sample Cards:</strong> Anything labeled <em>Sample Event</em> or <em>Sample Story</em> illustrates a future listing</li>
+                  <li><strong>Renewal &amp; Request Forms:</strong> Interactive previews only — no live checkout, email, or server storage</li>
+                  <li><strong>Player Directory:</strong> Members-only behind a demo sign-in. Uses clearly labeled <em>fictional sample names only</em> — the real club roster is not used</li>
+                  <li><strong>Photos:</strong> Open-licensed Arizona/pickleball photos until club photos are supplied</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -678,70 +860,6 @@
         </div>
       </section>
     </section>
-
-    <section id="view-contact" class="view" aria-labelledby="contact-heading" hidden>
-      <div class="page-intro">
-        <div class="container">
-          <h1 id="contact-heading">Let's Connect</h1>
-          <p class="page-lead">Direct club email contacts, Sports Desk address, and a clear note on what is real Robson Ranch data vs. concept-demo placeholders.</p>
-        </div>
-      </div>
-
-      <section class="band band-white">
-        <div class="container">
-          <div class="contact-cards-grid">
-            <article class="lime-contact-card">
-              <h2>General Inquiries &amp; Updates</h2>
-              <p>Questions about joining, beginner lessons, Treasurer's reports, or club events.</p>
-              <a href="mailto:robsonranchpickleball@gmail.com" class="underlined-link">robsonranchpickleball@gmail.com</a>
-            </article>
-
-            <article class="lime-contact-card">
-              <h2>Membership &amp; Rating Records</h2>
-              <p>Submit documented USAP, DUPR, IPTPA, or APPL ratings or ask about membership status.</p>
-              <a href="mailto:rrpbctreasure@gmail.com" class="underlined-link">rrpbctreasure@gmail.com</a>
-            </article>
-
-            <article class="lime-contact-card">
-              <h2>Skills Testing Coordinator</h2>
-              <p>Schedule a placement review or Step-Up assessment (testing runs Nov 1 – Mar 31).</p>
-              <a href="mailto:rraz.pickleball.ratings@gmail.com" class="underlined-link">rraz.pickleball.ratings@gmail.com</a>
-            </article>
-
-            <article class="lime-contact-card">
-              <h2>Courts &amp; Sports Desk</h2>
-              <p><strong>Courts:</strong> 5624 N. Robson Blvd, Eloy, AZ 85131<br/><strong>Sports Desk / Waivers:</strong> 5750 N. Robson Blvd<br/><strong>Phone:</strong> (520) 426-3355</p>
-              <a href="https://robsonranchpickleb.wixsite.com/website" target="_blank" rel="noopener noreferrer" class="underlined-link">Official Club Wix Site ↗</a>
-            </article>
-          </div>
-
-          <div class="callout-card mt-24" id="real-vs-sample">
-            <h3>What Is Real vs. Sample in This Concept Demo</h3>
-            <div class="truth-grid">
-              <div>
-                <h4>Verified Club Data (Real)</h4>
-                <ul class="clean-list">
-                  <li>All 16-court details, Nov 15–28 weekly schedule, and Oct 23 HOA Paddle Up rules</li>
-                  <li>2026–2027 Board of Directors, 670 members, $33,891 balance, 264–6 budget vote</li>
-                  <li>Bylaws, Code of Conduct, Guest Policy, Ratings &amp; Step-Up Policy (48+ pts)</li>
-                  <li>CourtReserve URL, Play Gizmo! rules, Playmate ball machines, real club emails</li>
-                  <li>Free Mon/Wed beginner lessons, Christmas on the Courts, March 11–13 Tournament</li>
-                </ul>
-              </div>
-              <div>
-                <h4>Demo Placeholders (Sample / Omitted)</h4>
-                <ul class="clean-list">
-                  <li><strong>Sample Cards:</strong> Any card labeled <em>Sample Event</em> or <em>Sample Story</em> illustrates future club features</li>
-                  <li><strong>Membership Form:</strong> Interactive dues preview only—no live checkout or server storage</li>
-                  <li><strong>No Member Roster:</strong> Member directory/roster is intentionally excluded for privacy</li>
-                  <li><strong>Photos:</strong> Open-licensed Arizona/pickleball photos until club photos are supplied</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </section>
   </main>
 
   <footer class="site-footer">
@@ -749,8 +867,8 @@
       <div class="footer-grid">
         <div class="footer-brand-col">
           <p class="footer-brand-title">Robson Ranch Pickleball Club</p>
-          <p class="footer-tagline">5624 N. Robson Blvd · Eloy, AZ 85131<br/>670 members · 16 dedicated courts · 8 lighted</p>
-          <p class="footer-legal">Concept demo site modeled for easy iPhone &amp; desktop navigation. Not the official club website.</p>
+          <p class="footer-tagline">5624 N. Robson Blvd · Eloy, AZ 85131<br/>Private club for Robson Ranch residents, homeowners, and qualified tenants.</p>
+          <p class="footer-legal">Concept demo site to make everyday play and board questions easier. Not the official club website. Non-residents are ineligible for membership (Bylaws).</p>
         </div>
 
         <div class="footer-col">
@@ -764,22 +882,22 @@
         </div>
 
         <div class="footer-col">
-          <h3>Explore</h3>
+          <h3>For Members</h3>
           <ul>
-            <li><a href="#about" data-nav="about">New Here &amp; About</a></li>
-            <li><a href="#play" data-nav="play">Courts &amp; Schedule</a></li>
-            <li><a href="#events" data-nav="events">Events &amp; .ics Calendar</a></li>
-            <li><a href="#membership" data-nav="membership">Become a Member</a></li>
+            <li><a href="#play" data-nav="play">Playtimes / Schedules</a></li>
+            <li><a href="#events" data-nav="events">Club Events &amp; .ics</a></li>
+            <li><a href="#testing" data-nav="testing">Player Testing</a></li>
+            <li><a href="#directory" data-nav="directory">Player Directory</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h3>Official Resources</h3>
+          <h3>Also on This Site</h3>
           <ul>
-            <li><a href="#policies" data-nav="policies">Bylaws &amp; Rules Search</a></li>
-            <li><a href="#news" data-nav="news">Club News</a></li>
+            <li><a href="#policies" data-nav="policies">Bylaws &amp; Court Rules</a></li>
+            <li><a href="#membership" data-nav="membership">Membership &amp; Renewal</a></li>
+            <li><a href="#help" data-nav="help">Help / FAQ &amp; Contacts</a></li>
             <li><a href="https://mobileapp.courtreserve.com/Online/Account/LogIn/16051" target="_blank" rel="noopener noreferrer">CourtReserve Login ↗</a></li>
-            <li><a href="https://robsonranchpickleb.wixsite.com/website" target="_blank" rel="noopener noreferrer">Current Club Site ↗</a></li>
           </ul>
         </div>
       </div>
@@ -789,7 +907,7 @@
   <div class="modal-backdrop" id="appModal" hidden>
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <div class="modal-header">
-        <h2 id="modalTitle">Membership Application Preview</h2>
+        <h2 id="modalTitle">Preview</h2>
         <button type="button" class="modal-close" id="closeModal" aria-label="Close modal">×</button>
       </div>
       <div class="modal-body" id="modalBody"></div>

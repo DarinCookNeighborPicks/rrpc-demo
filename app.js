@@ -1,8 +1,7 @@
 (function () {
   const D = window.RRPC_DATA;
-  const VIEWS = ["home", "about", "play", "events", "news", "membership", "policies", "contact"];
+  const VIEWS = ["home", "play", "events", "testing", "directory", "policies", "membership", "help", "news"];
 
-  // -------- Routing & Mobile Two-Line Drawer --------
   const menuToggle = document.getElementById("menuToggle");
   const mobileDrawer = document.getElementById("mobileDrawer");
 
@@ -28,8 +27,9 @@
       link.classList.toggle("active", target === viewId);
     });
     closeDrawer();
-    if (updateHash && location.hash !== "#" + viewId) {
-      history.pushState(null, "", "#" + viewId);
+    if (updateHash) {
+      const nextHash = scrollTarget ? "#" + scrollTarget : "#" + viewId;
+      if (location.hash !== nextHash) history.pushState(null, "", nextHash);
     }
     if (scrollTarget) {
       const targetEl = document.getElementById(scrollTarget);
@@ -45,31 +45,112 @@
     const navLink = e.target.closest("[data-nav]");
     if (!navLink) return;
     e.preventDefault();
-    showView(navLink.getAttribute("data-nav"));
+    showView(navLink.getAttribute("data-nav"), true, navLink.getAttribute("data-scroll"));
   });
 
-  window.addEventListener("hashchange", () => {
+  const HASH_ALIASES = {
+    "apply-form": ["membership", "renew-form"],
+    "renew-form": ["membership", "renew-form"],
+    "testing-request": ["testing", "testing-request"],
+    "request-forms": ["help", "request-forms"],
+    "real-vs-sample": ["help", "real-vs-sample"],
+    "contact-directory": ["help", "contact-directory"],
+    "faq-ratings": ["help", "faq-ratings"],
+    "faq-ball-machine": ["help", "faq-ball-machine"],
+    "today-play": ["home", "today-play"],
+    "this-week": ["home", "this-week"]
+  };
+
+  function routeFromHash(updateHash) {
     const raw = (location.hash || "#home").replace("#", "");
-    if (raw === "apply-form") {
-      showView("membership", false, "apply-form");
-    } else if (raw === "real-vs-sample") {
-      showView("contact", false, "real-vs-sample");
+    if (HASH_ALIASES[raw]) {
+      showView(HASH_ALIASES[raw][0], updateHash, HASH_ALIASES[raw][1]);
+    } else if (raw.startsWith("faq-")) {
+      showView("help", updateHash, raw);
     } else {
-      showView(raw, false);
+      showView(raw, updateHash);
     }
-  });
+  }
 
-  // -------- Home Checklist & Highlights --------
-  const checklistEl = document.getElementById("homeChecklist");
-  if (checklistEl && D.homeChecklist) {
-    checklistEl.innerHTML = D.homeChecklist
-      .map(
-        (item) => `
-        <div class="checklist-item">
-          <strong>${item.lead}</strong> – ${item.text}
-        </div>`
-      )
+  window.addEventListener("hashchange", () => routeFromHash(false));
+
+  // -------- Home: today's play, week glance, announcements --------
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const todayName = days[new Date().getDay()];
+  const dateLine = document.getElementById("homeDateLine");
+  if (dateLine) {
+    const nice = new Date().toLocaleDateString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      timeZone: "America/Phoenix"
+    });
+    dateLine.textContent = nice + " · Today’s play, court tools, and announcements — in one place for members.";
+  }
+
+  function sessionCardsHtml(dayName, blocks, emptyMsg) {
+    const cards = [];
+    (blocks || []).forEach((b) => {
+      cards.push(`
+        <article class="schedule-card">
+          <div class="schedule-time">${dayName} · ${b.time}</div>
+          ${b.items
+            .map(
+              (it) => `
+              <div style="margin-top:8px; padding-top:8px; border-top:1px solid rgba(25,80,81,0.1);">
+                <h3>${it.label}</h3>
+                <span class="schedule-courts">${it.courts}</span>
+              </div>`
+            )
+            .join("")}
+        </article>`);
+    });
+    return cards.join("") || `<div class="schedule-card"><p>${emptyMsg}</p></div>`;
+  }
+
+  const todayPlay = document.getElementById("todayPlay");
+  if (todayPlay) {
+    const heading = document.getElementById("todayHeading");
+    if (heading) heading.textContent = "Today’s Club Play — " + todayName;
+    todayPlay.innerHTML = sessionCardsHtml(
+      todayName,
+      D.schedule[todayName],
+      "No scheduled club play was found for today in the Nov 15–28 schedule."
+    );
+  }
+
+  let glanceDay = todayName;
+  const weekDayTabs = document.getElementById("weekDayTabs");
+  const weekGlance = document.getElementById("weekGlance");
+
+  function renderWeekTabs() {
+    weekDayTabs.innerHTML = days
+      .map((d) => {
+        const short = d.slice(0, 3);
+        const label = d === todayName ? `${short} · Today` : short;
+        return `<button type="button" class="chip-btn ${d === glanceDay ? "active" : ""}" data-week-day="${d}">${label}</button>`;
+      })
       .join("");
+  }
+
+  function renderWeekGlance() {
+    weekGlance.innerHTML = sessionCardsHtml(
+      glanceDay,
+      D.schedule[glanceDay],
+      `No sessions listed for ${glanceDay}.`
+    );
+  }
+
+  if (weekDayTabs && weekGlance) {
+    weekDayTabs.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-week-day]");
+      if (!btn) return;
+      glanceDay = btn.getAttribute("data-week-day");
+      renderWeekTabs();
+      renderWeekGlance();
+    });
+    renderWeekTabs();
+    renderWeekGlance();
   }
 
   const highlightsEl = document.getElementById("homeHighlights");
@@ -86,41 +167,9 @@
       .join("");
   }
 
-  // -------- About: Ratings & Board --------
-  const ratingsGrid = document.getElementById("ratingsGrid");
-  if (ratingsGrid && D.ratings) {
-    ratingsGrid.innerHTML = D.ratings
-      .map(
-        (r) => `
-        <article class="info-card">
-          <span class="card-eyebrow">${r.level}</span>
-          <h3>${r.title}</h3>
-          <p>${r.text}</p>
-        </article>`
-      )
-      .join("");
-  }
-
-  const boardGrid = document.getElementById("boardGrid");
-  if (boardGrid && D.board) {
-    boardGrid.innerHTML = D.board
-      .map(
-        (b) => `
-        <article class="info-card">
-          <span class="card-eyebrow">${b.role}</span>
-          <h3>${b.name}</h3>
-          <p>Robson Ranch Pickleball Club · 2026–2027 Term</p>
-        </article>`
-      )
-      .join("");
-  }
-
   // -------- Play: Weekly Schedule Filters --------
-  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const todayName = days[new Date().getDay()];
   let activeDay = todayName;
   let activeLevel = "all";
-
   const levelOptions = [
     { key: "all", label: "All Levels" },
     { key: "2.5", label: "2.5" },
@@ -173,8 +222,7 @@
               </div>`
             )
             .join("")}
-        </article>
-      `);
+        </article>`);
     });
     scheduleListEl.innerHTML =
       cards.join("") ||
@@ -201,7 +249,7 @@
   renderLevelChips();
   renderSchedule();
 
-  // -------- Play: Interactive 16-Court Map SVG --------
+  // -------- Play: Interactive 16-Court Map --------
   const courtNodesEl = document.getElementById("courtNodes");
   const courtDetailEl = document.getElementById("courtDetail");
   if (courtNodesEl && D.courts) {
@@ -247,7 +295,7 @@
     });
   }
 
-  // -------- Play: Play Gizmo! 3-Step Walkthrough --------
+  // -------- Play Gizmo! --------
   const gizmoSteps = [
     "<strong>Step 1 — Register Weekly:</strong> Sign into Play Gizmo! and choose your rated session for the upcoming week. Sessions are grouped by club rating (2.5, 3.0, 3.5, 4.0, 4.5+).",
     "<strong>Step 2 — Wednesday 11:00 PM Cutoff:</strong> Entries close Wednesday at 11:00 PM MST so coordinators can balance court counts and assign rotations fairly.",
@@ -267,7 +315,7 @@
   });
   showGizmoStep(0);
 
-  // -------- Events & .ics Calendar Export (America/Phoenix) --------
+  // -------- Events & .ics --------
   const eventCats = ["All", "Clinics & Training", "Club Play", "Tournaments", "Social", "Board & Meetings"];
   let activeEventCat = "All";
   const eventFiltersEl = document.getElementById("eventFilters");
@@ -382,7 +430,7 @@
     )
     .join("");
 
-  // -------- Membership Options & Application Mockup --------
+  // -------- Membership renewal mockup --------
   const duesMap = {
     "jan-sep": "$30.00",
     oct: "$15.00",
@@ -390,26 +438,37 @@
     dec: "$5.00"
   };
   const joinMonthSelect = document.getElementById("joinMonthSelect");
+  const memberTypeSelect = document.getElementById("memberTypeSelect");
   const duesAmount = document.getElementById("duesAmount");
   const membershipForm = document.getElementById("membershipForm");
   const appModal = document.getElementById("appModal");
+  const modalTitle = document.getElementById("modalTitle");
   const modalBody = document.getElementById("modalBody");
 
   function syncDues() {
+    if (memberTypeSelect && memberTypeSelect.value === "Renewal") {
+      joinMonthSelect.value = "jan-sep";
+    }
     duesAmount.textContent = duesMap[joinMonthSelect.value] || "$30.00";
   }
 
   joinMonthSelect.addEventListener("change", syncDues);
+  if (memberTypeSelect) {
+    memberTypeSelect.addEventListener("change", syncDues);
+  }
 
   document.querySelectorAll(".price-select").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       const jm = btn.getAttribute("data-join-month");
       if (jm) {
+        if (memberTypeSelect) {
+          memberTypeSelect.value = jm === "jan-sep" ? "Renewal" : "New Member";
+        }
         joinMonthSelect.value = jm;
         syncDues();
       }
-      document.getElementById("apply-form").scrollIntoView({ behavior: "smooth" });
+      document.getElementById("renew-form").scrollIntoView({ behavior: "smooth" });
     });
   });
 
@@ -418,22 +477,19 @@
     const data = new FormData(membershipForm);
     const fullName = (data.get("fullName") || "").toString().trim() || "Prospective Member";
     const email = (data.get("email") || "").toString().trim() || "Not entered";
-    const residency = data.get("residency");
-    const rating = data.get("rating");
     const dues = duesMap[joinMonthSelect.value] || "$30.00";
-    const waiverOk = membershipForm.elements.waiverSigned.checked ? "Confirmed" : "Needs Sports Desk signature";
-
+    modalTitle.textContent = "Membership Renewal Preview";
     modalBody.innerHTML = `
       <p><strong>Concept Demo Preview — Nothing was transmitted or charged.</strong></p>
       <ul class="clean-list">
+        <li><strong>Type:</strong> ${data.get("memberType")}</li>
         <li><strong>Applicant:</strong> ${fullName}</li>
         <li><strong>Email:</strong> ${email}</li>
-        <li><strong>Residency:</strong> ${residency}</li>
-        <li><strong>Skill Rating:</strong> ${rating}</li>
-        <li><strong>HOA Waiver:</strong> ${waiverOk}</li>
-        <li><strong>Calculated Dues:</strong> ${dues} (Online payment coming soon)</li>
+        <li><strong>Residency:</strong> ${data.get("residency")}</li>
+        <li><strong>Preferred Payment:</strong> ${data.get("payMethod")}</li>
+        <li><strong>Calculated Dues:</strong> ${dues}</li>
       </ul>
-      <p>In a live rollout, this step can connect to CourtReserve checkout or email the Treasurer at <strong>rrpbctreasure@gmail.com</strong>.</p>
+      <p>Real payment: checks payable to Robson Ranch Pickleball Club in the secure mailbox at the courts, a scanned form to <strong>rrpbctreasure@gmail.com</strong>, or CourtReserve <em>My Membership</em>.</p>
     `;
     appModal.hidden = false;
   });
@@ -447,7 +503,293 @@
     if (e.target === appModal) closeModal();
   });
 
-  // -------- Searchable Policies & Official Docs --------
+  // -------- Help: FAQ, contacts, board --------
+  const faqSearch = document.getElementById("faqSearch");
+  const clearFaqSearch = document.getElementById("clearFaqSearch");
+  const faqCount = document.getElementById("faqCount");
+  const faqList = document.getElementById("faqList");
+
+  function renderFaqs(query = "") {
+    const q = query.trim().toLowerCase();
+    clearFaqSearch.hidden = q.length === 0;
+    const matches = (D.faqs || []).filter((f) => {
+      if (!q) return true;
+      return `${f.topic} ${f.q} ${f.a}`.toLowerCase().includes(q);
+    });
+    faqCount.textContent = `Showing ${matches.length} of ${(D.faqs || []).length} questions`;
+    if (!matches.length) {
+      faqList.innerHTML = `<article class="faq-item"><p>No FAQs matched “${query}”. Try <em>reserve</em>, <em>48</em>, <em>guest</em>, or <em>paddle up</em>.</p></article>`;
+      return;
+    }
+    faqList.innerHTML = matches
+      .map(
+        (f) => `
+        <details class="faq-item" id="${f.id}" ${q ? "open" : ""}>
+          <summary>${f.q}</summary>
+          <div class="faq-body">
+            <span class="card-eyebrow">${f.topic}</span>
+            <p>${f.a}</p>
+          </div>
+        </details>`
+      )
+      .join("");
+  }
+
+  if (faqSearch) {
+    faqSearch.addEventListener("input", (e) => renderFaqs(e.target.value));
+    clearFaqSearch.addEventListener("click", () => {
+      faqSearch.value = "";
+      renderFaqs("");
+      faqSearch.focus();
+    });
+    renderFaqs("");
+  }
+
+  const contactDirectory = document.getElementById("contactDirectory");
+  if (contactDirectory && D.contactDirectory) {
+    contactDirectory.innerHTML = D.contactDirectory
+      .map(
+        (c) => `
+        <article class="lime-contact-card">
+          <h2>${c.title}</h2>
+          <p>${c.text}</p>
+          <a href="${c.href}" class="underlined-link">${c.contact}</a>
+        </article>`
+      )
+      .join("");
+  }
+
+  const boardGrid = document.getElementById("boardGrid");
+  if (boardGrid && D.board) {
+    boardGrid.innerHTML = D.board
+      .map(
+        (b) => `
+        <article class="info-card">
+          <span class="card-eyebrow">${b.role}</span>
+          <h3>${b.name}</h3>
+          <p>Robson Ranch Pickleball Club · 2026–2027 Term</p>
+        </article>`
+      )
+      .join("");
+  }
+
+  // -------- Request forms & board inbox preview --------
+  const FORM_META = {
+    rating: {
+      title: "Rating Evaluation Request",
+      route: "Testing Coordinator",
+      inbox: "rraz.pickleball.ratings@gmail.com"
+    },
+    machine: {
+      title: "Ball Machine Training Signup",
+      route: "Sports Desk / Training",
+      inbox: "Sports Desk · (520) 426-3355 (waiver & checkout)"
+    },
+    question: {
+      title: "General Question / Suggestion",
+      route: "General Club Inbox",
+      inbox: "robsonranchpickleball@gmail.com"
+    }
+  };
+
+  const demoInbox = [];
+
+  function renderInbox() {
+    const empty = `<p class="card-meta" style="margin:0;">No demo requests yet. Submit a form to see a sample inbox item.</p>`;
+    const html = demoInbox.length
+      ? demoInbox
+          .map(
+            (item) => `
+          <article class="inbox-item">
+            <span class="sample-badge">Demo Only · Not Sent</span>
+            <h4>${item.title}</h4>
+            <p class="card-meta">Would route to ${item.route} · ${item.inbox}<br/>Received (demo): ${item.when}</p>
+            ${item.details}
+          </article>`
+          )
+          .join("")
+      : empty;
+    const a = document.getElementById("inboxList");
+    const b = document.getElementById("testingInboxList");
+    if (a) a.innerHTML = html;
+    if (b) {
+      const ratingOnly = demoInbox.filter((i) => i.id === "rating");
+      b.innerHTML = ratingOnly.length
+        ? ratingOnly
+            .map(
+              (item) => `
+          <article class="inbox-item">
+            <span class="sample-badge">Demo Only · Not Sent</span>
+            <h4>${item.title}</h4>
+            <p class="card-meta">Would route to ${item.route} · ${item.inbox}<br/>Received (demo): ${item.when}</p>
+            ${item.details}
+          </article>`
+            )
+            .join("")
+        : empty;
+    }
+  }
+
+  function formDetails(id, data) {
+    if (id === "rating") {
+      return `<ul class="clean-list">
+        <li><strong>Name:</strong> ${data.get("name")}</li>
+        <li><strong>Email:</strong> ${data.get("email")}</li>
+        <li><strong>Current rating:</strong> ${data.get("currentRating")}</li>
+        <li><strong>Rating sought:</strong> ${data.get("soughtRating")}</li>
+        <li><strong>Notes:</strong> ${data.get("notes") || "None"}</li>
+      </ul>`;
+    }
+    if (id === "machine") {
+      return `<ul class="clean-list">
+        <li><strong>Name:</strong> ${data.get("name")}</li>
+        <li><strong>Email:</strong> ${data.get("email")}</li>
+        <li><strong>Phone:</strong> ${data.get("phone") || "Not provided"}</li>
+        <li><strong>Preferred window:</strong> ${data.get("window")}</li>
+      </ul>`;
+    }
+    return `<ul class="clean-list">
+      <li><strong>Name:</strong> ${data.get("name")}</li>
+      <li><strong>Email:</strong> ${data.get("email")}</li>
+      <li><strong>Topic:</strong> ${data.get("topic")}</li>
+      <li><strong>Message:</strong> ${data.get("message")}</li>
+    </ul>`;
+  }
+
+  document.querySelectorAll(".request-form").forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = form.getAttribute("data-form-id");
+      const meta = FORM_META[id];
+      const data = new FormData(form);
+      const when = new Date().toLocaleString("en-US", { timeZone: "America/Phoenix" });
+      demoInbox.unshift({
+        id,
+        title: meta.title,
+        route: meta.route,
+        inbox: meta.inbox,
+        when: when + " (Arizona time)",
+        details: formDetails(id, data)
+      });
+      renderInbox();
+      modalTitle.textContent = "Board Inbox Preview";
+      modalBody.innerHTML = `
+        <p><strong>Demo only — this request was not emailed or stored on a server.</strong></p>
+        <p>In a live site, this would appear in the <strong>${meta.route}</strong> queue (${meta.inbox}).</p>
+        ${formDetails(id, data)}
+      `;
+      appModal.hidden = false;
+      form.reset();
+    });
+  });
+  renderInbox();
+
+  document.querySelectorAll(".request-tabs").forEach((tabs) => {
+    tabs.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-form]");
+      if (!btn) return;
+      const id = btn.getAttribute("data-form");
+      tabs.querySelectorAll(".chip-btn").forEach((b) => b.classList.toggle("active", b === btn));
+      document.querySelectorAll("#form-machine, #form-question").forEach((f) => {
+        f.hidden = f.getAttribute("data-form-id") !== id;
+      });
+    });
+  });
+
+  // -------- Player Directory (fictional sample names, mock sign-in) --------
+  const directoryGate = document.getElementById("directoryGate");
+  const directoryApp = document.getElementById("directoryApp");
+  const AUTH_KEY = "rrpcDemoDirectoryAuth";
+  let dirRating = "all";
+  let dirQuery = "";
+
+  function isDirAuthed() {
+    return sessionStorage.getItem(AUTH_KEY) === "1";
+  }
+
+  function setDirAuth(on) {
+    if (on) sessionStorage.setItem(AUTH_KEY, "1");
+    else sessionStorage.removeItem(AUTH_KEY);
+    directoryGate.hidden = on;
+    directoryApp.hidden = !on;
+    if (on) renderDirectory();
+  }
+
+  document.getElementById("demoSignInBtn").addEventListener("click", () => setDirAuth(true));
+  document.getElementById("demoSignOutBtn").addEventListener("click", () => setDirAuth(false));
+
+  const dirChips = document.getElementById("directoryRatingChips");
+  const dirRatings = ["all", "2.0", "2.5", "3.0", "3.5", "4.0", "4.5", "5.0"];
+
+  function renderDirChips() {
+    dirChips.innerHTML = dirRatings
+      .map(
+        (r) =>
+          `<button type="button" class="chip-btn ${r === dirRating ? "active" : ""}" data-dir-rating="${r}">${r === "all" ? "All Ratings" : r}</button>`
+      )
+      .join("");
+  }
+
+  function renderDirectory() {
+    const q = dirQuery.trim().toLowerCase();
+    const rows = (D.sampleDirectory || []).filter((p) => {
+      const ratingOk = dirRating === "all" || p.rating === dirRating;
+      const nameOk = !q || p.name.toLowerCase().includes(q);
+      return ratingOk && nameOk;
+    });
+    document.getElementById("directoryCount").textContent =
+      `Showing ${rows.length} of ${(D.sampleDirectory || []).length} sample (fictional) members`;
+    document.getElementById("directoryList").innerHTML = rows.length
+      ? rows
+          .map(
+            (p) => `
+        <article class="directory-card">
+          <div>
+            <span class="sample-badge">${p.note}</span>
+            <h3>${p.name}</h3>
+            <span class="directory-rating">${p.rating}</span>
+          </div>
+          <button type="button" class="btn-pill btn-pill-outline-teal" data-contact-sample="${p.id}">Contact Me</button>
+        </article>`
+          )
+          .join("")
+      : `<p>No sample members match that name or rating.</p>`;
+  }
+
+  dirChips.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-dir-rating]");
+    if (!btn) return;
+    dirRating = btn.getAttribute("data-dir-rating");
+    renderDirChips();
+    renderDirectory();
+  });
+
+  document.getElementById("directorySearch").addEventListener("input", (e) => {
+    dirQuery = e.target.value;
+    renderDirectory();
+  });
+
+  document.getElementById("directoryList").addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-contact-sample]");
+    if (!btn) return;
+    const person = (D.sampleDirectory || []).find((x) => x.id === btn.getAttribute("data-contact-sample"));
+    if (!person) return;
+    modalTitle.textContent = "Contact Request (Demo Only)";
+    modalBody.innerHTML = `
+      <p><strong>Nothing was sent.</strong> In a live members-only directory, this would notify <em>${person.name}</em> (${person.rating}) with an option to reply.</p>
+      <p class="card-meta">${person.note} — this is not a real Robson Ranch member and is not from the club roster.</p>
+      <label class="field">
+        <span>Short message (demo only)</span>
+        <textarea rows="3" placeholder="This text stays in the preview and is never delivered."></textarea>
+      </label>
+    `;
+    appModal.hidden = false;
+  });
+
+  renderDirChips();
+  setDirAuth(isDirAuthed());
+
+  // -------- Searchable Policies --------
   const policySearch = document.getElementById("policySearch");
   const clearPolicySearch = document.getElementById("clearPolicySearch");
   const policyCount = document.getElementById("policyCount");
@@ -462,14 +804,11 @@
       const hay = `${p.title} ${p.date} ${p.keywords} ${p.summary} ${p.bullets.join(" ")}`.toLowerCase();
       return hay.includes(q);
     });
-
     policyCount.textContent = `Showing ${matches.length} of ${D.policies.length} official club documents`;
-
     if (!matches.length) {
-      policiesList.innerHTML = `<article class="policy-card"><p>No rules matched "${query}". Try searching <em>guest</em>, <em>paddle</em>, <em>48</em>, <em>lights</em>, or <em>bylaws</em>.</p></article>`;
+      policiesList.innerHTML = `<article class="policy-card"><p>No rules matched “${query}”. Try searching <em>guest</em>, <em>paddle</em>, <em>48</em>, <em>lights</em>, or <em>bylaws</em>.</p></article>`;
       return;
     }
-
     policiesList.innerHTML = matches
       .map(
         (p) => `
@@ -492,7 +831,6 @@
     renderPolicies("");
     policySearch.focus();
   });
-
   renderPolicies("");
 
   if (docsGrid && D.policies) {
@@ -509,13 +847,6 @@
       .join("");
   }
 
-  // -------- Initial View --------
-  const initial = (location.hash || "#home").replace("#", "");
-  if (initial === "apply-form") {
-    showView("membership", false, "apply-form");
-  } else if (initial === "real-vs-sample") {
-    showView("contact", false, "real-vs-sample");
-  } else if (VIEWS.includes(initial) && initial !== "home") {
-    showView(initial, false);
-  }
+  // -------- Initial view --------
+  routeFromHash(false);
 })();

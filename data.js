@@ -1,5 +1,132 @@
 window.RRPC_DATA = {
 
+  sampleDirectory: [
+    { id: "s01", name: "Jordan Lakeside", rating: "3.5", note: "Sample · Fictional" },
+    { id: "s02", name: "Casey Ironwood", rating: "3.0", note: "Sample · Fictional" },
+    { id: "s03", name: "Riley Sandstone", rating: "2.5", note: "Sample · Fictional" },
+    { id: "s04", name: "Avery Cactusglen", rating: "4.0", note: "Sample · Fictional" },
+    { id: "s05", name: "Morgan Mesa", rating: "3.5", note: "Sample · Fictional" },
+    { id: "s06", name: "Quinn Redrock", rating: "3.0", note: "Sample · Fictional" },
+    { id: "s07", name: "Taylor Saguaro", rating: "4.5", note: "Sample · Fictional" },
+    { id: "s08", name: "Sam Paloverde", rating: "2.5", note: "Sample · Fictional" },
+    { id: "s09", name: "Harper Crestline", rating: "3.0", note: "Sample · Fictional" },
+    { id: "s10", name: "Blair Desertfig", rating: "3.5", note: "Sample · Fictional" },
+    { id: "s11", name: "Drew Canyon", rating: "4.0", note: "Sample · Fictional" },
+    { id: "s12", name: "Jamie Agave", rating: "2.0", note: "Sample · Fictional" },
+    { id: "s13", name: "Reese Ocotillo", rating: "3.5", note: "Sample · Fictional" },
+    { id: "s14", name: "Cameron Sunridge", rating: "3.0", note: "Sample · Fictional" },
+    { id: "s15", name: "Kendall Arroyo", rating: "4.0", note: "Sample · Fictional" },
+    { id: "s16", name: "Logan Cholla", rating: "2.5", note: "Sample · Fictional" },
+    { id: "s17", name: "Peyton Ironwood", rating: "3.5", note: "Sample · Fictional" },
+    { id: "s18", name: "Alex Crestview", rating: "5.0", note: "Sample · Fictional" },
+    { id: "s19", name: "Robin Mesquite", rating: "3.0", note: "Sample · Fictional" },
+    { id: "s20", name: "Dana Palo Verde", rating: "4.5", note: "Sample · Fictional" }
+  ],
+
+  contactDirectory: [
+    {
+      title: "General Questions, Events & Guest Play",
+      text: "Club announcements, event questions, and guest-play procedures.",
+      contact: "robsonranchpickleball@gmail.com",
+      href: "mailto:robsonranchpickleball@gmail.com"
+    },
+    {
+      title: "Membership, Dues & Rating Records",
+      text: "Renewals, resident-status checks, incoming rating transfers, and Treasurer’s records.",
+      contact: "rrpbctreasure@gmail.com",
+      href: "mailto:rrpbctreasure@gmail.com"
+    },
+    {
+      title: "Skills Testing & Step-Up Scheduling",
+      text: "Request a testing date or retest (window: November 1 – March 31).",
+      contact: "rraz.pickleball.ratings@gmail.com",
+      href: "mailto:rraz.pickleball.ratings@gmail.com"
+    },
+    {
+      title: "Sports Desk, Waivers & Ball Machines",
+      text: "HOA liability waivers and Playmate machine checkout after required training.",
+      contact: "5750 N. Robson Blvd · (520) 426-3355",
+      href: "tel:5204263355"
+    }
+  ],
+
+  faqs: [
+    {
+      id: "faq-membership",
+      topic: "Membership",
+      q: "Who can join the Robson Ranch Pickleball Club?",
+      a: "Membership is open to Robson Ranch homeowners, residents, or qualified tenants meeting Association requirements (Bylaws, Article VI). Non-residents are ineligible for membership. Registered guests may attend scheduled events on a space-available basis; they do not pay dues and are not members (Article VII)."
+    },
+    {
+      id: "faq-reserve",
+      topic: "CourtReserve",
+      q: "How do I reserve a court?",
+      a: "Club members may reserve Courts 3–14 in CourtReserve for 1- or 2-hour slots, up to 3 days in advance, starting at 6:30 AM. Courts 1, 2, 15, and 16 are HOA walk-up / Paddle Up courts and cannot be reserved."
+    },
+    {
+      id: "faq-open-reservation",
+      topic: "CourtReserve",
+      q: "What is Open Reservation?",
+      a: "When you book a court, check the Open Reservation box if you want other club members to be able to join and fill empty spots on your reservation."
+    },
+    {
+      id: "faq-ten-minute",
+      topic: "CourtReserve",
+      q: "What is the 10-minute abandonment rule?",
+      a: "Reserved courts are considered abandoned 10 minutes after the top of the hour if the reserved players do not show up. Those courts then become Paddle Up courts (HOA Open Play Usage, effective October 23, 2026)."
+    },
+    {
+      id: "faq-ratings",
+      topic: "Ratings",
+      q: "When is player testing, and how do I sign up?",
+      a: "Club testing runs November 1 through March 31. Members may test up one level at a time. First complete a Skills Self-Assessment and track scores from four gender-specific round robins at your current rating (forms are on CourtReserve). Then email the Testing Coordinator at rraz.pickleball.ratings@gmail.com to request a date (first-come, first-served). You can also use the demo request form on the Player Testing page. Rating records and transfers are handled by the Treasurer at rrpbctreasure@gmail.com."
+    },
+    {
+      id: "faq-step-up",
+      topic: "Ratings",
+      q: "How does Step-Up play and the 48-point standard work?",
+      a: "After a testing date is confirmed, you may participate in Step-Up play at the requested level for up to two round robins. Register on CourtReserve — no walk-ons. The test itself is a six-game, gender-specific round robin with Control Players (games to 11, win by one). A total of at least 48 points qualifies you to advance. A score of 45–47 allows one retest with an Outside Observer. Below 45, you may apply again in a later eligible season."
+    },
+    {
+      id: "faq-incoming-rating",
+      topic: "Ratings",
+      q: "I am a new resident with a rating from another club. What happens?",
+      a: "Your starting club rating is the highest of: a previous RRAZ-PC rating; a qualifying other-club rating (written proof of membership, rating, and club contact within 15 days; provisional for up to 30 days); or a qualifying APPL rating from the most recently concluded season. DUPR, IPTPA, UTR-P, observation-based, and self-ratings are not accepted as an independent club rating. If you have no verified rating, you are classified Novice (2.0) and attend free Beginner Classes (Mondays and Wednesdays, 8–10 AM, HOA Courts 1–2). The Treasurer verifies ratings at rrpbctreasure@gmail.com."
+    },
+    {
+      id: "faq-guests",
+      topic: "Guests",
+      q: "What are the guest rules?",
+      a: "A guest is a non-resident visiting at the invitation of a member, homeowner, associate member, or qualified tenant. For the first visit, the guest must go to the HOA Office with a guest guideline form, sign a fitness waiver, have a photo taken, and receive a guest pass. Later visits: the homeowner turns in a guest guideline form to reactivate the guest. Weekend arrivals register at the Sports Club for a temporary pass and should complete official registration at the HOA Office on Monday. An adult must be present when guests under 16 use the courts. In round-robin play, club members at that rating have priority, then members playing up, then members playing down, then guests. Questions: robsonranchpickleball@gmail.com."
+    },
+    {
+      id: "faq-ball-machine",
+      topic: "Ball Machines",
+      q: "How do I check out a ball machine?",
+      a: "Two Playmate ball machines are checked out at the Sports Desk (5750 N. Robson Blvd, 520-426-3355) during posted hours — call ahead, as hours vary. You must complete in-person training and the Safety Checklist / HOA Facilities Waiver first. Use is limited to one hour when others are waiting, and machines may not be checked out within 1½ hours of closing. Do not unjam the machine yourself; wear protective eyewear; push the toggle UP and use the remote; return the battery pack promptly. Use the demo Ball Machine Training signup on the Help page to see how a request would be queued."
+    },
+    {
+      id: "faq-paddle-up",
+      topic: "HOA Play",
+      q: "How does HOA Open Play / Paddle Up work?",
+      a: "Effective October 23, 2026, HOA Courts 1, 2, 15, and 16 have no reservations. Robson Ranch residents and registered guests use them walk-up. Place your paddle in the box in arrival order; the first four paddles play one game to 11, then all four leave (if no one is waiting, they may stay). Vacant club courts during scheduled events, and reserved courts abandoned after 10 minutes, also become Paddle Up courts. Drills or ball-machine practice on an HOA court are limited to 20 minutes when others are paddled up and no other court is vacant."
+    },
+    {
+      id: "faq-conduct",
+      topic: "Conduct",
+      q: "What does the Code of Conduct require?",
+      a: "Members and guests are expected to show good sportsmanship, respectful behavior, fairness, and honesty, and to follow directions of club officers. Fun, equal treatment of beginners and veterans, and friendship come first. Inappropriate or bullying behavior — including physical or verbal aggression, intimidation, harassment, and cyber bullying — is not tolerated. Officers may limit or deny participation. A disciplined member may petition the Board for reconsideration within four days. Retaliation for reporting, and false accusations, are also violations. Play is expected to follow USA Pickleball Rules and the Sportsmanship Guide."
+    },
+    {
+      id: "faq-pay",
+      topic: "Membership",
+      q: "How do I renew or pay dues?",
+      a: "Annual dues are $30 per person, payable by January 31. New members joining later in the year pay a prorated amount: $15 in October, $10 in November, $5 in December. Make checks payable to Robson Ranch Pickleball Club and deposit the form and payment in the secure mailbox at the Pickleball Courts. You may also email a scanned form to rrpbctreasure@gmail.com. For online renewal, log into CourtReserve, select My Membership, and Pay Membership."
+    }
+  ],
+
+
+
   homeChecklist: [
     { lead: "16 Dedicated Courts", text: "purpose-built surface right beside the Robson Ranch Sports Club" },
     { lead: "8 Lighted Courts", text: "Courts 1–8 lit nightly until 10:00 PM for evening play" },
